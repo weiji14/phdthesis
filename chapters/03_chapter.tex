@@ -1,0 +1,81 @@
+% The role of subglacial topography on Antarctic ice flow
+
+\section{Ice Sheet Modelling with a better bed}
+
+The bed elevation of Antarctica is an important parameter in ice sheet modelling studies, yet it is one of the most difficult to observe.
+Following on from our last Chapter (TODO link), we put our super-resolution Digital Elevation Model to test with an ice sheet model to see what insights a high resolution bed has in a contemporary setting.
+Specifically, this chapter will look into the basal traction parameters that are deduced from inverse methods.
+This contributes to the glaciology tradition of studying the role in which basal boundary conditions at the base of an ice sheet has an influence on ice flow.
+
+\subsection{Inverse problems}
+
+Inverse problems are common in glaciology (and geophysics in general), and involves having to know the causes given the effects.
+We are trying to deduce the state of a physical system, given an operator that acts on them to produce a set of observations we can measure.
+In this context, we can define the following terms:
+The model parameters $m$: These are the quantities we want to know but are unable to determine directly, though they can usually be constrained to a reasonable range.
+The forward model $G$: A mathematical representation of the relevant physics that maps the model parameters to some results we can observe.
+The data $d$: These are the quantities we can observe and measure with some degree of precision.
+
+The forward problem of having model parameters $m$ and passing it into the forward model $G$ to obtain data $d$ is straightforward and well-posed.
+For given model parameters $m$, there are unique data $d$.
+In contrast, the inverse problem of using the data $d$ and forward model $G$ to deduce the model parameters $m$ is difficult and usually ill-posed.
+This is because a specific data observation $d$ may correspond to many possible solutions for $m$, or there might not be a tractable solution, especially if $G$ represents a non-linear physical system.
+
+An additional complication is that the inverse solution to $m$ is very sensitive to small changes in $d$ that may contain errors.
+It cannot be overstated then, that the aim of inverse methods is not to find a set parameters $m$ that can fit the data $d$ exactly, but to find constraints on $m$ so that the model $G$ produces results that fits to data $d$ within acceptable error limits.
+Owing to the many solutions that an inverse method usually produces, there are often additional criteria that are used to reduce the number of possible solutions.
+Some of these criteria may or may not be explicitly stated, and it it necessary to be aware of these additional assumptions when dealing with inverse problems.
+
+In general, we can broadly categorize inverse methods as falling into two categories - regularization and statistical inference \citep[see][for a review]{GudmundssonInverseMethodsGlaciology2011}.
+The regularization approach attempts to find a solution for parameters $m$ that can fit to the data $d$ while being able to meet the demands of the regularization term's constraints.
+The statistical inference approach is often based on the Bayes Theorem, where the posterior distribution $p(m|d)$ of the state of the physical system $p$ given the data distribution $d$ is estimated.
+
+\begin{equation}
+  p(m|d) = \frac{p(m)p(d|m)}{p(d)}
+\end{equation}
+
+Either way, most of these nonlinear inverse methods use an iterative approach to minimize or maximize some given cost function.
+TODO reword from \citep{GudmundssonInverseMethodsGlaciology2011}
+TODO maybe change $p$ to $x$ and $d$ to $y$ and $G$ to $f$.
+With the regularization approach, the cost function to be minimized could be written as $|d|_a + |p - G(p)|_b$ for some function norms $|\cdot|_a$ and $|\cdot|_b$.
+With the Bayesian inference method, we wish to maximize the posterior distribution $p(m|d)$ with respect to $d$.
+Such problems are computationally intensive tasks, and most ways of effectively minimizing/maximizing the cost function require a way to estimate the gradient of the cost function with respect to the model parameters $p$.
+One of the first ways of calculating the gradient efficiently uses the adjoint state method \citep{MacAyealtutorialusecontrol1993}.
+Since then however, other heuristical methods \citep{Pollardsimpleinversemethod2012} and a technique adapted from electric impedance tomography TODO??? \citep{ArthernFlowspeedAntarctic2015} have also been used.
+
+\subsection{Inverting for basal conditions}
+
+There is a strong motivation to study the basal conditions of the Antarctic Ice Sheet using inverse methods.
+Ice deformation is unable to account for the observed magnitude of fast flow along ice streams, and hence the study of basal slip is paramount to understand ice dynamics.
+Using readily available surface observations of ice velocity and ice elevation, and some a priori knowledge of the bed, we can invert for the mechanical conditions at the base of the ice sheet.
+Only by understanding the base of the ice sheet, are we then able to predict with some confidence how the ice sheet will behave in the future.
+
+A common exercise in ice sheet modelling studies is the need to initialize model parameters such that they are physically consistent with known observations.
+This initialization step has to take place before any prognostic runs or sensitivity analyses are undertaken by the modeller.
+The parameters that govern the basal boundary conditions are the most important to know in the case of fast flowing glaciers or ice streams where ice velocity is mainly due to basal slip.
+The extent of which the physics that govern the movement of ice flowing over the bed terrain is governed by a sliding law.
+This sliding law relates the basal sliding velocity $u_b$ with the basal shear stress $\tau_b$ (also known as basal drag or basal traction).
+As the parameters within the sliding law vary over geographic space, due to variations in water pressure, bed roughness, etc, they must be determined using inverse methods.
+
+TODO put some equations here.
+
+\subsection{Inverting for ice rheology}
+
+The viscosity ice is another spatially varying parameter to be determined in ice flow models using inverse methods.
+The rheology of ice is nonlinear and polycrystalline glacier ice is a viscous fluid, with its viscosity being a function of stress.
+At such, ice is also known as a non-Newtownian fluid, or more speficially, a power-law fluid.
+Temperature also has a strong control on ice viscosity.
+We can formulate the effective viscosity of ice as follows:
+
+\begin{equation}
+  \eta = \frac{1}{2A\tau^{n-1}}
+\end{equation}
+
+where the effective viscosity $\eta$ is dependent on the rate factor $A$ and the second invariant of the deviatoric stress tensor $\tau$, with $n$ being the exponent in Glen's flow law usually taken to be 3.
+The rate factor $A = A(T)$ is dependent on temperature and other parameters such as water content, impurity content and crystal size.
+
+Englacial temperatures in ice sheets should in theory be easy to calculate, given accurate boundary conditions such as geothermal heat flux.
+In practice however, such data are not easy to source and contain uncertainties too great to be relied on.
+Instead, it is possible to put surface data observations into an inverse model, and let it obtain the spatial distribution of viscosity that will match up with surface ice velocity.
+The relative stability of ice rheology over short time periods means that we can use our estimates to conduct prognostic ice sheet model runs for decadal scale prediction.
+See also studies of inverse methods to deduce rheology applied to the Ronne Ice Shelf \citep{LarourRheologyRonneIce2005}, Larsen B Ice Shelf \citep{KhazendarLarsenIceShelf2007}, and the whole of Antarctica \citep{ArthernFlowspeedAntarctic2015}.

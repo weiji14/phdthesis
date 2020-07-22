@@ -1,0 +1,146 @@
+% DeepBedMap: A super resolution deep neural network for resolving the bed topography of Antarctica
+
+\section{Deep Neural Networks}
+
+\subsection{Deep Neural Networks}
+
+An artificial neural network, very loosely based on biological neural networks, is a system comprised of neurons.
+Each neuron represents a simple mathematical function that takes an input $x$ and produces some output $\hat{y}$.
+Neural networks are built by combining several neurons together (TODO put in Figure), either by stacking them in parallel (width-wise), or by joining them one after another (depth-wise) as multiple hidden layers.
+
+\begin{align}
+  & z = w^{\intercal} \cdot x + b \label{eq:2.1}\\
+  & a = \sigma(z) \label{eq:2.2}
+\end{align}
+
+where $z$ is the output of a linear function with transposed weights $w^\intercal$ multiplied against input vector $x$, added to a bias vector $b$.
+We then obtain a single neuron's output activation $a$ by passing $z$ into the sigmoid activation function $\sigma = \frac{1}{1+e^{-x}}$.
+Note that the weights $w$ and bias $b$ are adjustable parameters which will be tuned during the neural network training process described later below.
+
+The term deep neural network is used when there is not a direct mapping between the input data $x$ and the output prediction $\hat{y}$.
+In other words, we call it deep when there are two or more hidden layers in the neural network.
+We show below a mathematical representation on forward propagation over a simple two-layer neural network:
+
+\begin{equation}\label{eq:2.3}
+  \begin{aligned}
+    & z^{{[1]}} = W^{[1]}x + b^{[1]} \\
+    & a^{[1]} = \sigma(z^{[1]})
+  \end{aligned}
+\end{equation}
+
+\begin{equation}\label{eq:2.4}
+  \begin{aligned}
+    & z^{[2]} = W^{[2]}a^{[1]} + b^{[2]} \\
+    & \hat{y} = a^{[2]} = \sigma(z^{[2]})
+  \end{aligned}
+\end{equation}
+
+where Equation \eqref{eq:2.3} is simply taken from the same neuron function in Equation \eqref{eq:2.1} and \eqref{eq:2.2}, modified so that $W = w^\intercal$ and with superscripts added to indicate that they are for the first layer.
+Equation \eqref{eq:2.4} follows on from equation \eqref{eq:2.3}, where the activation value from the first layer $a^{[1]}$ is multiplied by the second layer's weights $W^{[2]}$ and added to the biases $b^{[2]}$.
+We then pass the intermediate value $z^{[2]}$ into the sigmoid function $\sigma$ to obtain our second layer's activation value $a^{[2]}$, and as this is our final layer, the value corresponds to our predicted value $\hat{y}$.
+
+Earlier layers in the neural network start off as simple representations of fairly simple features deduced from the input data.
+Deeper layers progressively build on these earlier layers, connecting different semantic information together to form more complex feature representations that can provide useful information to generate the desired output prediction \citep{GoodfellowDeeplearning2016}.
+
+Initially, a neural network will almost always produce output predictions that do not match the groundtruth value $y$.
+The difference between the groundtruth $y$ and predicted value $\hat{y}$ is used as the basis for training the neural network.
+We do this by computing the error difference, and step backwards through the neural network, gradually updating the weights of each neuron in each layer using some calculus.
+Basically, the greater the contribution of a neuron to the predicted output, the greater the adjustment to that neuron's weight.
+This backward update is also termed as backpropagation \citep{RumelhartLearningrepresentationsbackpropagating1986}.
+
+Following on from the forward propagation procedure in Equation \eqref{eq:2.3} and Equation \eqref{eq:2.4}, we now demonstrate the backpropagation procedure on a logistic regression problem (values between 0 and 1):
+
+\begin{equation}\label{eq:2.5}
+  \mathcal{L}(a,y) = -y log a - (1-y)log(1-a)
+\end{equation}
+
+where the error between the neuron's activation output $a$ and groundtruth $y$ is computed using a loss function (or cost function) on one neuron $\mathcal{L}$.
+The loss value from this equation is maximed (near infinity) when the activation value $a$ and groundtruth value $y$ are very different.
+For example, when $a=0$ and $y=1$, $\mathcal{L} = -1 log 0 - (1-1)log(1-0) = \inf$.
+To get the neural network's activation $a$ closer to the groundtruth $y$, we thus have to minimize our loss function by modifying our tunable parameters $w$ and $b$.
+The steps are as follows:
+
+\begin{equation}\label{eq:2.6}
+  \frac{\partial{\mathcal{L}}}{\partial{a}} = -\frac{y}{a} + \frac{1-y}{1-a}
+\end{equation}
+
+where we first compute the partial derivatives of our loss function $\mathcal{L}$ with respect to $a$.
+Following this, we have:
+
+\begin{equation}\label{eq:2.7}
+  \begin{aligned}
+    & = \sigma(z) = \frac{1}{1+e^{-z}}\\
+    \frac{\partial{a}}{\partial{z}} & = \frac{e^{-z}}{(1+e^{-z})^2} \\
+    & = \frac{1}{(1+e^{-z})} \cdot \frac{e^{-z}}{(1+e^{-z})} \\
+    & = \frac{1}{(1+e^{-z})} \cdot \frac{1 + e^{-z} -1}{(1+e^{-z})} \\
+    & = \frac{1}{(1+e^{-z})} \cdot \left( 1 - \frac{1}{(1+e^{-z})} \right) \\
+    & = a(1-a)
+  \end{aligned}
+\end{equation}
+
+where we differentiate activation $a$ with respective to $z$.
+Using the chain rule, we find that:
+
+\begin{equation}\label{eq:2.8}
+  \frac{\partial{\mathcal{L}}}{\partial{z}} = \frac{\partial{\mathcal{L}}}{\partial{a}} \cdot \frac{\partial{a}}{\partial{z}}
+\end{equation}
+
+where the partial derivative of $\mathcal{L}$ with respect to $z$ is equivalent to the dot product of Equation \eqref{eq:2.6} and Equation \eqref{eq:2.7}.
+Substituting \eqref{eq:2.6} and \eqref{eq:2.7} into Equation \eqref{eq:2.8}, we can simplify the equation:
+
+\begin{equation}\label{eq:2.9}
+  \begin{aligned}
+    \frac{\partial{\mathcal{L}}}{\partial{z}} & = \left( -\frac{y}{a} + \frac{1-y}{1-a} \right) \cdot (a(1-a)) \\
+    & = \left( \frac{-y(1-a)}{a(a-a)} + \frac{a(1-y)}{a(1-a)} \right) \cdot (a(1-a)) \\
+    & = -y + ay + a - ay \\
+    & = a - y
+  \end{aligned}
+\end{equation}
+
+With this, we can then compute the partial derivatives of the loss function $\mathcal{L}$ with respect to the weights $w$ and bias $b$ using the chain rule again:
+
+\begin{equation}\label{eq:2.10}
+  \begin{aligned}
+    \frac{\partial{\mathcal{L}}}{\partial{w}} & = \frac{\partial{\mathcal{L}}}{\partial{z}} \cdot \frac{\partial{z}}{\partial{w}} \\
+    & = (a-y) \cdot x
+  \end{aligned}
+\end{equation}
+
+\begin{equation}\label{eq:2.11}
+  \begin{aligned}
+    \frac{\partial{\mathcal{L}}}{\partial{b}} & = \frac{\partial{\mathcal{L}}}{\partial{z}} \cdot \frac{\partial{z}}{\partial{b}} \\
+    & = (a-y) \cdot 1 \\
+    & = a - y
+  \end{aligned}
+\end{equation}
+
+where the first term on the right hand side $\frac{\partial{\mathcal{L}}}{\partial{z}}$ is obtained from Equation \eqref{eq:2.9} and the second term is obtained by differentiating the linear function in Equation \eqref{eq:2.1} and \eqref{eq:2.2}.
+Finally, we can update the weights $w$ and bias $b$ of our neuron using gradient descent as follows:
+
+\begin{equation}\label{eq:2.12}
+  \begin{aligned}
+    w & \coloneqq w - \alpha \cdot \frac{\partial{\mathcal{L}}}{\partial{w}} \\
+    b & \coloneqq b - \alpha \cdot \frac{\partial{\mathcal{L}}}{\partial{b}}
+  \end{aligned}
+\end{equation}
+
+where we set the new weight $w$ (or bias $b$) as the old weight $w$ (or old bias $b$) minus the dot product of the learning rate $\alpha$ and the partial derivative $\frac{\partial{\mathcal{L}}}{\partial{w}}$ (or $\frac{\partial{\mathcal{L}}}{\partial{b}})$ from Equation \eqref{eq:2.10} (or Equation \eqref{eq:2.11}).
+The learning rate $\alpha$ is a hyperparameter that can be adjusted to determine the size of each update increment, and is usually set as a small floating point number (e.g. 0.01).
+
+These forward propagation (Equations \eqref{eq:2.1} to \eqref{eq:2.4}) and backpropagation (Equations \eqref{eq:2.5} to \eqref{eq:2.12}) steps represents a single iteration for training a neural network.
+With each iteration, the loss value from the loss function in Equation \eqref{eq:2.6} should gradually decrease as the weights $w$ and biases $b$ in the neurons are updated.
+In other words, the neural network will be able to produce a predicted result $\hat{y}$ that more closely resembles the groundtruth $y$.
+The benefit of neural networks are that they can act as universal approximators for any continuous function given certain conditions \citep{LeshnoMultilayerfeedforwardnetworks1993}.
+This means that well trained neural networks are able to act as independent models to most of the mathematical models we have.
+
+\subsection{Convolutional Neural Networks}
+
+Convolutional neural networks (\gls{ConvNets}) have their origin in the computer vision community, and are usually used in place of standard neural networks (see Section TODO label) for working on images.
+They differ from standard artificial neural networks in that kernels or filters are used in place of regular neurons \citep[see][for a review]{LeCunDeeplearning2015}.
+The techniques were developed in the 1980s \citep{FukushimaNeocognitronnewalgorithm1982,LeCunBackpropagationAppliedHandwritten1989} and are commonly used in pattern recognitions tasks \citep[e.g.][]{LecunGradientbasedlearningapplied1998}.
+\gls{ConvNets} became a prominent tool in the computer vision community since the AlexNet architecture \citep{KrizhevskyImageNetclassificationdeep2017} almost halved the error rate of conventional object classification approaches in the 2012 ImageNet Large Scale Visual Recognition Challenge.
+Besides classification tasks, \gls{ConvNets} have also been adapted for other uses.
+
+\subsection{Generative Adversarial Networks}
+
+\subsection{Super Resolution}

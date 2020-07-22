@@ -1,0 +1,76 @@
+\documentclass[12pt,twoside]{book}
+\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm]{geometry}
+\usepackage[natbib,style=apa,backend=biber]{biblatex}
+\bibliography{thesis.bib}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage[acronym,symbols,nogroupskip,nonumberlist]{glossaries-extra}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[bookmarks]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{textcomp}
+
+\makeglossaries[\acronymtype]
+
+\glsxtrnewsymbol[description={hydropotential}]{phi}{\ensuremath{\phi}}
+\glsxtrnewsymbol[description={time}]{t}{\ensuremath{t}}
+
+\newacronym{ConvNets}{ConvNets}{Convolutional Neural Networks}
+
+
+\title{
+{The subglacial landscape and hydrology of Antarctica as mapped from space}\\
+{\large Antarctic Research Centre, Victoria University of Wellington}\\
+{\includegraphics[scale=0.5]{arc_logo.jpg}}
+}
+\author{Wei Ji Leong}
+\date{\today}
+
+\begin{document}
+
+\input{titlepage}
+
+\chapter*{Abstract}
+Abstract goes here
+
+\chapter*{Dedication}
+To Penny
+
+\chapter*{Declaration}
+I declare that..
+
+\chapter*{Acknowledgements}
+I want to thank...
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\printnoidxglossary[type=symbols,sort=use,style=long,title={List of Symbols}]
+\printglossary[type=\acronymtype]
+
+\chapter{Introduction}
+\input{chapters/01_introduction}
+
+\chapter{Chapter Two Title}
+\input{chapters/02_chapter}
+
+\chapter{Chapter Three Title}
+\input{chapters/03_chapter}
+
+\chapter{Chapter Four Title}
+\input{chapters/04_chapter}
+
+\chapter{Conclusion}
+\input{chapters/05_conclusion}
+
+\appendix
+\chapter{Appendix Title}
+\input{chapters/06_appendix}
+
+\printbibliography
+
+\end{document}
