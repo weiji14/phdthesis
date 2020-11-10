@@ -31,7 +31,7 @@ However, it is important to keep in mind that the treatment of Antarctic glacier
 The Antarctic subglacial water system is likely to be predominantly supplied from basal melt processes, such as from geothermal heat sources or perhaps from frictional heating under areas of fast ice flow.
 
 Only in a handful of places has there been a comprehensive study that looked at the subglacial conditions of an Antarctic ice stream.
-An area that was heavily focused on initially was the Whillans Ice Stream (formerly Ice Stream B) at the Siple Coast in West Antarctica where seismic surveys identified a water saturated, ~5 m thick porous till layer \citep{BlankenshipSeismicmeasurementsreveal1986} that could easily deform and explain the high surface velocities observed over that area \citep{AlleyDeformationtillice1986}.
+An area that was heavily focused on initially was the Whillans Ice Stream (formerly Ice Stream B) at the Siple Coast in West Antarctica where seismic surveys identified a water saturated, ~\SI{5}{\metre} thick porous till layer \citep{BlankenshipSeismicmeasurementsreveal1986} that could easily deform and explain the high surface velocities observed over that area \citep{AlleyDeformationtillice1986}.
 Also in the vicinity at Subglacial Lake Whillans, ice penetrating radar \citep{ChristiansonSubglacialLakeWhillans2012} and active seismic \citep{HorganSubglacialLakeWhillans2012} surveys were conducted to constrain the thickness of the ice and water bodies as part of the Whillans Ice Stream Subglacial Access Research Drilling (WISSARD) project \citep{TulaczykWISSARDSubglacialLake2014}.
 
 % TODO Debate about bed topography vs water
@@ -162,7 +162,7 @@ We can thus use these different patterns in the elevation timeseries data to det
 
 On the surface (air-ice interface), snow accummulation can lead to an increase in elevation, while a decrease in elevation can come from snow compaction or mass wasting processes.
 Surface proccesses are seasonally dependent, with an increase in elevation due to snow accummulation over the austral winter, and a decrease in elevation due to snow compaction in the austral summer.
-In Antarctica, accummulation tends to be a slow and gradual process due the low precipitation over the continent, in the order of ~2 mm a year (TODO cite Arthern).
+In Antarctica, accummulation tends to be a slow and gradual process due the low precipitation over the continent, in the order of ~\SI{2}{\milli\metre\per\year} (TODO cite Arthern).
 Mass wasting processes typically occur in fast flowing ice regions like glaciers and ice streams.
 Over a year, the net contribution of these surface processes are typically in the order of centimetres to tens of centimetres a year.
 Over a decade, these may amount to about a metre or less of elevation change, and we can this stable linear trend in most parts of the Antarctic continent over the satellite era (TODO cite 2020 Science paper on ice loss).
@@ -247,8 +247,8 @@ While we continue to filter out data that are problematic due to clouds, there i
 Our algorithm is as follows:
 
 \begin{enumerate}
-  \item For an ATL11 point, calculate $h_{range}$. Keep ATL11 points that have $h_{range} > 0.5 m$, drop the rest
-  \item For the remaining ATL11 points, calculate $\frac{dh}{dt}$. Keep ATL11 points that have $\frac{dh}{dt} > 0.5 m y^{-1}$, drop the rest
+  \item For an ATL11 point, calculate $h_{range}$. Keep ATL11 points that have $h_{range} > \SI{0.5}{\metre}$, drop the rest
+  \item For the remaining ATL11 points, calculate $\frac{dh}{dt}$. Keep ATL11 points that have $\frac{dh}{dt} > \SI{0.5}{\metre\per\year}$, drop the rest
   \item For the remaining ATL11 points, check that there exists a spatial cluster of points with similar $\frac{dh}{dt}$ values surrounding it (1 sq km? TODO). Keep ATL11 points that are within high $\frac{dh}{dt}$ spatial clusers, drop the rest.
   \item For the remaining ATL11 points, cross correlate the areas with additional information such as ice velocity data, hydropotential calculations, image differencing, etc.
   \item Generate polygons of active subglacial lake boundaries, with information on estimated ice volume gained/lost over \gls{t} amount of time. TODO properly.
