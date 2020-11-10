@@ -5,9 +5,13 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \usepackage{amsmath,amsfonts,amssymb}
+\usepackage{caption}
+\usepackage{subcaption}
 \usepackage[acronym,symbols,nogroupskip,nonumberlist]{glossaries-extra}
 \usepackage{graphicx}
-\graphicspath{ {images/} }
+\graphicspath{ {figures/} }
+\DeclareGraphicsExtensions{.png,.pdf}  % use during development
+% \DeclareGraphicsExtensions{.pdf,.png}  % use for final production
 \usepackage[bookmarks]{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage{mathtools}
@@ -26,7 +30,7 @@
 \title{
 {The subglacial landscape and hydrology of Antarctica as mapped from space}\\
 {\large Antarctic Research Centre, Victoria University of Wellington}\\
-{\includegraphics[scale=0.5]{arc_logo.jpg}}
+{\includegraphics[scale=0.5]{0_arc_logo.jpg}}
 }
 \author{Wei Ji Leong}
 \date{\today}

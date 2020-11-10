@@ -13,6 +13,10 @@
 *.log
 *.lot
 *.out
+*.pdf
 *.run.xml
 *.synctex.gz
 *.toc
+
+figures/*.pdf
+figures/*.png
