@@ -1,6 +1,18 @@
 % DeepBedMap: a deep neural network for resolving the bed topography of Antarctica
 
-\begin{abstract}
+% Macros to follow Copernicus Publications style
+% \usepackage{units}
+\DeclareRobustCommand*\unit[1]
+ {\ensuremath{%
+   {\thinmuskip3mu\relax
+    \def\mu{\text{\textmu}}\def~{\,}%
+    \ifx\f@series\testbx\mathbf{#1}\else\mathrm{#1}\fi}}}
+\newcommand\tophline{\hline\noalign{\vspace{1mm}}}
+\newcommand\middlehline{\noalign{\vspace{1mm}}\hline\noalign{\vspace{1mm}}}
+\newcommand\bottomhline{\noalign{\vspace{1mm}}\hline}
+
+\section*{Abstract}
+
 To resolve the bed elevation of Antarctica, we present DeepBedMap~-- a novel machine learning method that can produce Antarctic bed topography with adequate surface roughness from multiple remote sensing data inputs.
 The super-resolution deep convolutional neural network model is trained on scattered regions in Antarctica where high-resolution (250\,\unit{m}) ground-truth bed elevation grids are available.
 This model is then used to generate high-resolution bed topography in less surveyed areas.
@@ -9,20 +21,13 @@ It takes in additional high-spatial-resolution datasets, such as ice surface ele
 The DeepBedMap model is based on an adapted architecture of the Enhanced Super-Resolution Generative Adversarial Network, chosen to minimize per-pixel elevation errors while producing realistic topography.
 The final product is a four-times-upsampled (250\,\unit{m}) bed elevation model of Antarctica that can be used by glaciologists interested in the subglacial terrain and by ice sheet modellers wanting to run catchment- or continent-scale ice sheet model simulations.
 We show that DeepBedMap offers a rougher topographic profile compared to the standard bicubically interpolated BEDMAP2 and BedMachine Antarctica and envision it being used where a high-resolution bed elevation model is required.
-\end{abstract}
 
-
-\texlicencestatement{This work is distributed under \hack{\newline} the Creative Commons Attribution 4.0 License.}
-\maketitle
-
-\hack{\newpage}
-
-\introduction  %% \introduction[modified heading if necessary]
+\section{Introduction} %% \introduction[modified heading if necessary]
 
 The bed of the Antarctic ice sheet is one of the most challenging surfaces on Earth to map due to the thick layer of ice cover.
 Knowledge of bed elevation is however essential for estimating the volume of ice currently stored in the ice sheets and for input to the numerical models that are used to estimate the contribution ice sheets are likely to make to sea level in the coming century.
 The Antarctic ice sheet is estimated to hold a sea level equivalent (SLE) of 57.9\,$\pm$\,0.9\,\unit{m} \citep{MorlighemDeepglacialtroughs2019}.
-Between 2012 and 2017, the Antarctic ice sheet was losing mass at an average rate of 219\,$\pm$\,43\,\unit{Gt\,yr^{-1}} (0.61\,$\pm$\,0.12\,\unit{mm\,yr^{-1}} SLE), with most of the ice loss attributed to the acceleration, retreat and rapid thinning of major West Antarctic Ice Sheet outlet glaciers \citep{IMBIEMassbalanceAntarctic2018}.
+Between 2012 and 2017, the Antarctic ice sheet was losing mass at an average rate of 219\,$\pm$\,\SI{43}{\giga\tonne\per\year} (0.61\,$\pm$\,\SI{0.12}{\milli\metre\per\year} SLE), with most of the ice loss attributed to the acceleration, retreat and rapid thinning of major West Antarctic Ice Sheet outlet glaciers \citep{IMBIEMassbalanceAntarctic2018}.
 Bed elevation exerts additional controls on ice flow by routing subglacial water and providing frictional resistance to flow \citep{SiegertMacroscalebedroughness2004}.
 Bed roughness, especially at short wavelengths, exerts a frictional force against the flow of ice, making it an important influence on ice velocity \citep{BinghamDiverselandscapesPine2017,FalciniQuantifyingbedroughness2018}.
 The importance of bed elevation has led to major efforts to compile bed elevation models of Antarctica, notably with the BEDMAP1 \citep{LytheBEDMAPnewice2001} and BEDMAP2 \citep{FretwellBedmap2improvedice2013} products.
@@ -125,7 +130,6 @@ This grid is further post-processed to mask out pixels that are more than 3~\uni
   Various locations in Antarctica & \citet{ShiMultichannelCoherentRadar2010}         \\
   \bottomhline
   \end{tabular}
-  \belowtable{} % Table Footnotes
 \end{table}
 
 %T2
@@ -142,14 +146,14 @@ This grid is further post-processed to mask out pixels that are more than 3~\uni
   $w^3$  & Antarctic snow accumulation & snow accumulation rate (\unit{kg\,m^{-2}\,yr^{-1}}) & {~~~~~~~}1000\,\unit{m}               & \citet{ArthernAntarcticsnowaccumulation2006}     \\
   \bottomhline
   \end{tabular}
-  \belowtable{$^{\mathrm{a}}$\,Note that the $x$ and $y$~components of velocity are used here instead of the norm. \\
+  \caption{$^{\mathrm{a}}$\,Note that the $x$ and $y$~components of velocity are used here instead of the norm. \\
   $^{\mathrm{b}}$\,Gaps in 100\,\unit{m} mosaic filled in with bilinear resampled 200\,\unit{m} resolution REMA image. \\
   $^{\mathrm{c}}$\,Originally 450\,\unit{m}; bilinear resampled to 500\,\unit{m}.} % Table Footnotes
 \end{table*}
 
 %F1
 \begin{figure*}[t]
-  \includegraphics[width=170mm]{figures/fig1_deepbedmap_architecture_compressed.pdf}
+  \includegraphics[width=170mm]{figures/chp2_fig1_deepbedmap_architecture_compressed}
   \caption{
     DeepBedMap generator model architecture composed of three modules.
     The input module processes each of the four inputs (BEDMAP2, \citealp{FretwellBedmap2improvedice2013}; REMA, \citealp{HowatReferenceElevationModel2019}; MEaSUREs Ice Velocity, \citealp{MouginotMEaSUREsPhaseMap2019}; snow accumulation, \citealp{ArthernAntarcticsnowaccumulation2006}; see also Table~\ref{table:datainputs}) into a consistent tensor.
@@ -212,7 +216,7 @@ The overall goal of the entire network is to make the distribution of generated 
 
 %F2
 \begin{figure*}[t]
-    \includegraphics[width=120mm]{figures/fig2_deepbedmap_dem_compressed.pdf}
+    \includegraphics[width=120mm]{figures/chp2_fig2_deepbedmap_dem_compressed}
     \caption{
       DeepBedMap\_DEM over the entire Antarctic continent.
       Plotted on an Antarctic stereographic projection (EPSG:3031) with elevation referenced to the WGS84 datum.
@@ -264,7 +268,7 @@ The transition from the DeepBedMap\_DEM to the bathymetry product across the gro
 
 %F3
 \begin{figure*}[t]
-  \includegraphics[width=130mm]{figures/fig3_qualitative_bed_comparison.png}
+  \includegraphics[width=130mm]{figures/chp2_fig3_qualitative_bed_comparison}
   \caption{
     Comparison of interpolated bed elevation grid products over Pine Island Glacier (see extent in Figure \ref{fig:2}).
     \textbf{a} DeepBedMap (ours) at 250 m resolution.
@@ -277,7 +281,7 @@ The transition from the DeepBedMap\_DEM to the bathymetry product across the gro
 
 %F4
 \begin{figure*}[t]
-  \includegraphics[width=170mm]{figures/fig4_deepbedmap_closeups.eps}
+  \includegraphics[width=170mm]{figures/chp2_fig4_deepbedmap_closeups}
   \caption{
     Close-up views of DeepBedMap\_DEM around Antarctica.
     Panels \textbf{(a--c)}~show Siple Coast locations.
@@ -302,7 +306,7 @@ Terrace (\textbf{T}) features can occasionally be found winding along the side o
 
 %F5
 \begin{figure*}[t]
-  \includegraphics[width=130mm]{figures/fig5_elevation_roughness_grids.eps}
+  \includegraphics[width=130mm]{figures/chp2_fig5_elevation_roughness_grids}
   \caption{
     Spatial 2-D view of grids over Thwaites Glacier, West Antarctica.
     Plotted on an Antarctic stereographic projection (EPSG:3031) with elevation and SD values in metres referenced to the WGS84 datum.
@@ -329,7 +333,7 @@ Looking at the roughness statistic (Fig.~\ref{fig:6}b), both the DeepBedMap\_DEM
 
 %F6
 \begin{figure}[t]
-  \includegraphics[width=83mm]{figures/fig6_elevation_roughness_transect.eps}
+  \includegraphics[width=83mm]{figures/chp2_fig6_elevation_roughness_transect}
   \caption{
     Comparing bed elevation~\textbf{(a)} and surface roughness~\textbf{(b)} (SD of elevation values) of each interpolated grid product (250\,\unit{m} resolution) over a transect (see Fig.~\ref{fig:5} for location of transect line).
     Purple values are from the super-resolution DeepBedMap\_DEM;
@@ -436,7 +440,7 @@ The redesigned neural network model can be retrained from scratch or fine-tuned 
 Taken together, these advances will lead to an even more accurate and higher-resolution bed elevation model.
 
 
-\conclusions  %% \conclusions[modified heading if necessary]
+\section{Conclusions}  %% \conclusions[modified heading if necessary]
 
 The DeepBedMap convolutional neural network method presents a data-driven approach to resolve the bed topography of Antarctica using existing data.
 It is an improvement beyond simple interpolation techniques, generating high-spatial-resolution (250\,\unit{m}) topography that preserves detail in bed roughness and is adaptable for catchment- to continent-scale studies on ice sheets.
@@ -451,8 +455,6 @@ One side product resulting from this work is a test-driven development framework
 The radioglaciology community has already begun to compile a new comprehensive bed elevation and ice thickness dataset for Antarctica, and there have been discussions on combining various terrain interpolation techniques in an ensemble to collaboratively create the new BEDMAP3.
 
 
-
-\hack{\clearpage}
 
 \appendix
 
@@ -553,10 +555,9 @@ We next describe the method used to evaluate each DeepBedMap candidate model, as
 
 %TB1
 \begin{table}[b!]
-  \hack{\hsize\textwidth}
   \caption{Optimized hyperparameter settings.}
   \label{table:B1}
-  \begin{tabular}{lrr}
+  \begin{tabularx}{\textwidth}{lrr}
   \tophline
   Hyperparameter                                       & Setting             & Tuning range                           \\
   \middlehline
@@ -574,8 +575,7 @@ We next describe the method used to evaluate each DeepBedMap candidate model, as
   Adam optimizer beta1                                 & 0.9                 & Fixed                                  \\
   Adam optimizer beta2                                 & 0.99                & Fixed                                  \\
   \bottomhline
-  \end{tabular}
-  \belowtable{} % Table Footnotes
+  \end{tabularx}
 \end{table}
 
 To check for overfitting, we evaluate the generative adversarial network model using the validation dataset after each epoch using two performance metrics~-- a peak signal-to-noise ratio (PSNR) metric for the generator and an accuracy metric for the discriminator.
@@ -597,77 +597,39 @@ The top models from these experiments undergo further visual evaluation, and we 
 % \noappendix       %% use this to mark the end of the appendix section. Otherwise the figures might be numbered incorrectly (e.g. 10 instead of 1).
 
 
-\hack{\clearpage}
 
 
 
 %% The following commands are for the statements about the availability of data sets and/or software code corresponding to the manuscript.
 %% It is strongly recommended to make use of these sections in case data sets and/or software code have been part of your research the article is based on.
 
-\codeavailability{
-  Python code for data preparation, neural network model training and visualization of model outputs is freely available at \url{https://github.com/weiji14/deepbedmap} (last access: 9~August~2020) and at \doi{10.5281/zenodo.3752613} \citep{LeongDeepBedMap2020}.
-  Neural network model training experiment runs are also recorded at \url{https://www.comet.ml/weiji14/deepbedmap} (last access: 9~August~2020).
-} %% use this section when having only software code available
+\section{Code and data availability}
+
+Python code for data preparation, neural network model training and visualization of model outputs is freely available at \url{https://github.com/weiji14/deepbedmap} (last access: 9~August~2020) and at \url{https://doi.org/10.5281/zenodo.3752613} \citep{LeongDeepBedMap2020}.
+Neural network model training experiment runs are also recorded at \url{https://www.comet.ml/weiji14/deepbedmap} (last access: 9~August~2020).
+
+The DeepBedMap\_DEM is available from Zenodo at \url{https://doi.org/10.5281/zenodo.3752613}  \citep{LeongDeepBedMap2020}.
+The Pine Island Glacier dataset \citep{BinghamDiverselandscapesPine2017} is available on request from Robert Bingham.
+The Carlson Inlet dataset \citep{KingIcestreamnot2011} is available on request from Edward King.
+Bed elevation datasets from Wilkes Subglacial Basin \citep{FerraccioliAirborneradarbed2018} and Rutford Ice Stream \citep{KingSubglaciallandformsRutford2016} are available from the British Antarctic Survey's Polar Data Centre (\url{https://ramadda.data.bas.ac.uk}, last access: 14~January~2020).
+Other Antarctic bed elevation datasets are available from the Center for Remote Sensing of Ice Sheets (\url{https://data.cresis.ku.edu/data/rds}, last access: 15~August~2019) or from the National Snow and Ice Data Center (\url{https://nsidc.org/data/IRMCR2/versions/1}, last access: 15~August~2019).
+BEDMAP2 \citep{FretwellBedmap2improvedice2013} and REMA \citep{HowatReferenceElevationModel2018} are available from the Polar Geospatial Center (\url{http://data.pgc.umn.edu}, last access: 30~August~2019).
+MEaSUREs Ice Velocity data \citep{MouginotMEaSUREsPhaseMap2019} are available from NSIDC (\url{https://nsidc.org/data/nsidc-0754/versions/1}, last access: 31~August~2019).
+Antarctic snow accumulation data \citep{ArthernAntarcticsnowaccumulation2006} are available from the British Antarctic Survey (\url{https://secure.antarctica.ac.uk/data/bedmap2/resources/Arthern_accumulation}, last access: 17~June~2019).
 
 
-\dataavailability{
-  The DeepBedMap\_DEM is available from Zenodo at \doi{10.5281/zenodo.3752613}  \citep{LeongDeepBedMap2020}.
-  The Pine Island Glacier dataset \citep{BinghamDiverselandscapesPine2017} is available on request from Robert Bingham.
-  The Carlson Inlet dataset \citep{KingIcestreamnot2011} is available on request from Edward King.
-  Bed elevation datasets from Wilkes Subglacial Basin \citep{FerraccioliAirborneradarbed2018} and Rutford Ice Stream \citep{KingSubglaciallandformsRutford2016} are available from the British Antarctic Survey's Polar Data Centre (\url{https://ramadda.data.bas.ac.uk}, last access: 14~January~2020).
-  Other Antarctic bed elevation datasets are available from the Center for Remote Sensing of Ice Sheets (\url{https://data.cresis.ku.edu/data/rds}, last access: 15~August~2019) or from the National Snow and Ice Data Center (\url{https://nsidc.org/data/IRMCR2/versions/1}, last access: 15~August~2019).
-  BEDMAP2 \citep{FretwellBedmap2improvedice2013} and REMA \citep{HowatReferenceElevationModel2018} are available from the Polar Geospatial Center (\url{http://data.pgc.umn.edu}, last access: 30~August~2019).
-  MEaSUREs Ice Velocity data \citep{MouginotMEaSUREsPhaseMap2019} are available from NSIDC (\url{https://nsidc.org/data/nsidc-0754/versions/1}, last access: 31~August~2019).
-  Antarctic snow accumulation data \citep{ArthernAntarcticsnowaccumulation2006} are available from the British Antarctic Survey (\url{https://secure.antarctica.ac.uk/data/bedmap2/resources/Arthern_accumulation}, last access: 17~June~2019).
-} %% use this section when having only data sets available
+% \authorcontribution{
+%   WJL was responsible for data curation, formal analysis, methodology, software, visualization and writing the original draft.
+%   HJH was responsible for funding acquisition and supervision.
+%   Both authors conceptualized the work and contributed to the reviewing and editing stages of the writing.
+% } %% this section is mandatory
 
+\section{Acknowledgements}
 
-% \codedataavailability{TEXT} %% use this section when having data sets and software code available
+We are grateful to Robert Bingham and Edward King for the Pine Island Glacier and Carlson Inlet data and to all the other researchers in the British Antarctic Survey and Operation IceBridge team for providing free access to the high-resolution bed elevation datasets around Antarctica.
+A special thanks to Ruzica Dadic for her help in reviewing draft versions of this paper.
+This research was funded by the Royal Society of New Zealand's Rutherford Discovery Fellowship (contract RDF-VUW1602), with additional support from the Erasmus+ programme and International Glaciological Society early-career travel award for presenting earlier versions of this work at the 2019 EGU General Assembly and IGS Symposium on Five Decades of Radioglaciology.
 
-
-% \sampleavailability{TEXT} %% use this section when having geoscientific samples available
-
-
-% \videosupplement{TEXT} %% use this section when having video supplements available
-
-
-
-
-%% Regarding figures and tables in appendices, the following two options are possible depending on your general handling of figures and tables in the manuscript environment:
-
-%% Option 1: If you sorted all figures and tables into the sections of the text, please also sort the appendix figures and appendix tables into the respective appendix sections.
-%% They will be correctly named automatically.
-
-%% Option 2: If you put all figures after the reference list, please insert appendix tables and figures after the normal tables and figures.
-%% To rename them correctly to A1, A2, etc., please add the following commands in front of them:
-
-\appendixfigures  %% needs to be added in front of appendix figures
-
-\appendixtables   %% needs to be added in front of appendix tables
-
-%% Please add \clearpage between each table and/or figure. Further guidelines on figures and tables can be found below.
-
-
-
-\authorcontribution{
-  WJL was responsible for data curation, formal analysis, methodology, software, visualization and writing the original draft.
-  HJH was responsible for funding acquisition and supervision.
-  Both authors conceptualized the work and contributed to the reviewing and editing stages of the writing.
-} %% this section is mandatory
-
-\competinginterests{The authors declare that they have no conflict of interest.} %% this section is mandatory even if you declare that no competing interests are present
-
-% \disclaimer{TEXT} %% optional section
-
-\begin{acknowledgements}
-  We are grateful to Robert Bingham and Edward King for the Pine Island Glacier and Carlson Inlet data and to all the other researchers in the
-  British Antarctic Survey and Operation IceBridge team for providing free access to the high-resolution bed elevation datasets around Antarctica.
-  A special thanks to Ruzica Dadic for her help in reviewing draft versions of this paper.
-  This research was funded by the Royal Society of New Zealand's Rutherford Discovery Fellowship (contract RDF-VUW1602), with additional support from the Erasmus+ programme and International Glaciological Society early-career travel award for presenting earlier versions of this work at the 2019 EGU General Assembly and IGS Symposium on Five Decades of Radioglaciology.
-\end{acknowledgements}
-
-
-\financialsupport{This research has been supported by the Royal Society of New Zealand (Rutherford Discovery Fellowship -- contract no.~RDF-VUW1602).}
-
-
-\reviewstatement{This paper was edited by Olivier~Gagliardini and reviewed by Martin~Siegert and one anonymous referee.}
+Chapter 2, in full, is a reprint of material as it appears in The Cryosphere:
+Leong, W. J., \& Horgan, H. J. (2020). DeepBedMap: A deep neural network for resolving the bed topography of Antarctica. The Cryosphere, 14(11), 3687–3705. \url{https://doi.org/10.5194/tc-14-3687-2020}.
+The paper was edited by Olivier~Gagliardini and reviewed by Martin~Siegert and one anonymous referee.

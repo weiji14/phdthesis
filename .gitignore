@@ -18,5 +18,6 @@
 *.synctex.gz
 *.toc
 
+figures/*.eps
 figures/*.pdf
 figures/*.png

@@ -10,12 +10,13 @@
 \usepackage[acronym,symbols,nogroupskip,nonumberlist]{glossaries-extra}
 \usepackage{graphicx}
 \graphicspath{ {figures/} }
-\DeclareGraphicsExtensions{.png,.pdf}  % use during development
-% \DeclareGraphicsExtensions{.pdf,.png}  % use for final production
+\DeclareGraphicsExtensions{.png,.pdf,.eps}  % use during development
+% \DeclareGraphicsExtensions{.eps,.pdf,.png}  % use for final production
 \usepackage[bookmarks]{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage{mathtools}
 \usepackage{siunitx}
+\usepackage{tabularx}
 \usepackage{textcomp}
 
 \makeglossaries[\acronymtype]
@@ -61,7 +62,7 @@ I want to thank...
 \chapter{Introduction}
 \input{chapters/01_introduction}
 
-\chapter{Chapter Two Title}
+\chapter{DeepBedMap: a deep neural network for resolving the bed topography of Antarctica}
 \input{chapters/02_chapter}
 
 \chapter{Chapter Three Title}
