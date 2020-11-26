@@ -19,5 +19,6 @@
 *.toc
 
 figures/*.eps
+figures/*.jpg
 figures/*.pdf
 figures/*.png
