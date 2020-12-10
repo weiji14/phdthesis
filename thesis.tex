@@ -1,12 +1,15 @@
 \documentclass[12pt,twoside]{book}
-\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm]{geometry}
-\usepackage[natbib,style=apa,backend=biber]{biblatex}
+\usepackage[a4paper,width=150mm,top=25mm,bottom=20mm,headheight=14.5pt]{geometry}
+\usepackage[natbib,style=apa,backend=biber,backref=true]{biblatex}
 \bibliography{thesis.bib}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+\usepackage{algorithm}% http://ctan.org/pkg/algorithm
+\usepackage{algpseudocode}% http://ctan.org/pkg/algorithmicx
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage[T1]{fontenc}
 \usepackage[acronym,symbols,nogroupskip,nonumberlist]{glossaries-extra}
 \usepackage{graphicx}
 \graphicspath{ {figures/} }
@@ -18,13 +21,28 @@
 \usepackage{siunitx}
 \usepackage{tabularx}
 \usepackage{textcomp}
+\usepackage{titlesec}
 
+% SIrange using em-dash
+\sisetup{range-phrase=--}
+
+% subsubsubsections paragraphs
+\setcounter{secnumdepth}{3}
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% glossary items
 \makeglossaries[\acronymtype]
 
 \glsxtrnewsymbol[description={hydropotential}]{phi}{\ensuremath{\phi}}
 \glsxtrnewsymbol[description={time}]{t}{\ensuremath{t}}
-
 \newacronym{ConvNets}{ConvNets}{Convolutional Neural Networks}
+\newacronym{DEM}{DEM}{Digital Elevation Model}
+\newacronym{RES}{RES}{Radio-echo sounding}
+\newacronym{SLE}{SLE}{Sea level equivalent}
+%Not a Number (NaN)
 
 \DeclareSIUnit\year{yr}
 
