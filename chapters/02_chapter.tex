@@ -114,7 +114,7 @@ This grid is further post-processed to mask out pixels that are more than 3~\uni
 
 %T1
 \begin{table}[t]
-  \caption{
+  \caption[High-resolution ground-truth datasets for training DeepBedMap]{
     High-resolution ground-truth datasets from ice-penetrating-radar surveys (collectively labelled as~$y$) used to train the DeepBedMap model.
     Training site locations can be seen in Fig.~\ref{fig:2}.
   }
@@ -146,7 +146,7 @@ This grid is further post-processed to mask out pixels that are more than 3~\uni
   $w^3$  & Antarctic snow accumulation & snow accumulation rate (\unit{kg\,m^{-2}\,yr^{-1}}) & {~~~~~~~}1000\,\unit{m}               & \citet{ArthernAntarcticsnowaccumulation2006}     \\
   \bottomhline
   \end{tabular}
-  \caption{$^{\mathrm{a}}$\,Note that the $x$ and $y$~components of velocity are used here instead of the norm. \\
+  \caption*{$^{\mathrm{a}}$\,Note that the $x$ and $y$~components of velocity are used here instead of the norm. \\
   $^{\mathrm{b}}$\,Gaps in 100\,\unit{m} mosaic filled in with bilinear resampled 200\,\unit{m} resolution REMA image. \\
   $^{\mathrm{c}}$\,Originally 450\,\unit{m}; bilinear resampled to 500\,\unit{m}.} % Table Footnotes
 \end{table*}
@@ -154,7 +154,7 @@ This grid is further post-processed to mask out pixels that are more than 3~\uni
 %F1
 \begin{figure*}[t]
   \includegraphics[width=170mm]{figures/chp2_fig1_deepbedmap_architecture_compressed}
-  \caption{
+  \caption[DeepBedMap generator model architecture]{
     DeepBedMap generator model architecture composed of three modules.
     The input module processes each of the four inputs (BEDMAP2, \citealp{FretwellBedmap2improvedice2013}; REMA, \citealp{HowatReferenceElevationModel2019}; MEaSUREs Ice Velocity, \citealp{MouginotMEaSUREsPhaseMap2019}; snow accumulation, \citealp{ArthernAntarcticsnowaccumulation2006}; see also Table~\ref{table:datainputs}) into a consistent tensor.
     The core module processes the rich information contained within the concatenated inputs.
@@ -217,7 +217,7 @@ The overall goal of the entire network is to make the distribution of generated 
 %F2
 \begin{figure*}[t]
     \includegraphics[width=120mm]{figures/chp2_fig2_deepbedmap_dem_compressed}
-    \caption{
+    \caption[DeepBedMap\_DEM overview map over the entire Antarctic continent]{
       DeepBedMap\_DEM over the entire Antarctic continent.
       Plotted on an Antarctic stereographic projection (EPSG:3031) with elevation referenced to the WGS84 datum.
       Grounding line is plotted as thin black line.
@@ -269,7 +269,7 @@ The transition from the DeepBedMap\_DEM to the bathymetry product across the gro
 %F3
 \begin{figure*}[t]
   \includegraphics[width=130mm]{figures/chp2_fig3_qualitative_bed_comparison}
-  \caption{
+  \caption[2-D comparison of interpolated bed elevation grid products over Pine Island Glacier]{
     Comparison of interpolated bed elevation grid products over Pine Island Glacier (see extent in Figure \ref{fig:2}).
     \textbf{a} DeepBedMap (ours) at 250 m resolution.
     \textbf{b} BEDMAP2 \citep{FretwellBedmap2improvedice2013}, originally 1000 m, bicubic interpolated to 250 m.
@@ -282,7 +282,7 @@ The transition from the DeepBedMap\_DEM to the bathymetry product across the gro
 %F4
 \begin{figure*}[t]
   \includegraphics[width=170mm]{figures/chp2_fig4_deepbedmap_closeups}
-  \caption{
+  \caption[2-D Close-up views of DeepBedMap\_DEM over Antarctica]{
     Close-up views of DeepBedMap\_DEM around Antarctica.
     Panels \textbf{(a--c)}~show Siple Coast locations.
     Panels \textbf{(d--f)}~show Weddell Sea region locations.
@@ -307,7 +307,7 @@ Terrace (\textbf{T}) features can occasionally be found winding along the side o
 %F5
 \begin{figure*}[t]
   \includegraphics[width=130mm]{figures/chp2_fig5_elevation_roughness_grids}
-  \caption{
+  \caption[Spatial 2-D view of bed elevation and roughness grids over Thwaites Glacier]{
     Spatial 2-D view of grids over Thwaites Glacier, West Antarctica.
     Plotted on an Antarctic stereographic projection (EPSG:3031) with elevation and SD values in metres referenced to the WGS84 datum.
     \textbf{(a)}~DeepBedMap digital elevation model.
@@ -334,7 +334,7 @@ Looking at the roughness statistic (Fig.~\ref{fig:6}b), both the DeepBedMap\_DEM
 %F6
 \begin{figure}[t]
   \includegraphics[width=83mm]{figures/chp2_fig6_elevation_roughness_transect}
-  \caption{
+  \caption[Transect plots of bed elevation and surface roughness of interpolated grid products]{
     Comparing bed elevation~\textbf{(a)} and surface roughness~\textbf{(b)} (SD of elevation values) of each interpolated grid product (250\,\unit{m} resolution) over a transect (see Fig.~\ref{fig:5} for location of transect line).
     Purple values are from the super-resolution DeepBedMap\_DEM;
     orange values are from tension-spline-interpolated Operation IceBridge ground-truth points;
@@ -456,7 +456,7 @@ The radioglaciology community has already begun to compile a new comprehensive b
 
 
 
-\appendix
+\begin{appendices}
 
 \section{Details of loss function components} \label{appendix:A}
 
@@ -595,7 +595,7 @@ We set each GPU to run a target of 60 experimental trials (i.e. a total of 240),
 The top models from these experiments undergo further visual evaluation, and we continue to conduct further experiments until a suitable candidate model is found.
 
 % \noappendix       %% use this to mark the end of the appendix section. Otherwise the figures might be numbered incorrectly (e.g. 10 instead of 1).
-
+\end{appendices}
 
 
 
