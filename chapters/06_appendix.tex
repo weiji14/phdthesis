@@ -1,0 +1,40 @@
+% Appendix
+
+\section{Hydropotential} \label{sec:hydropotential}
+
+% hydropotential formulation
+% Estimate subglacial water routes https://www.mathworks.com/matlabcentral/fileexchange/55352-how-to-estimate-subglacial-water-routes
+
+Hydropotential (or hydrostatic pressure) refers to the static energy of water available at a particular time and place.
+It is a function of the amount of pressure exerted on a water body, located at a particular elevation relative to a reference datum.
+By calculating hydropotential over a spatial surface, we can then derive the hydropotential gradients which provides us with a measure of the direction and tendency of water to flow if suitable conduits exist in its path.
+Following the methods of \citet{ShreveMovementWaterGlaciers1972}, basal hydropotential \gls{phi} is calculated as follows:
+
+\begin{equation}\label{eq:4.11}
+  \phi = \phi_0 + p_w + \rho_wgz_b
+\end{equation}
+
+where \gls{phi} denotes hydropotential at the base of the ice, $\phi_0$ is an arbitrary constant, $p_w$ is water pressure and $\rho_wgz_b$ is the elevation potential term.
+The elevation potential term is made up of the density of water $\rho_w$ multiplied by the gravitational acceleration term $g$ multiplied by the bed elevation $z_b$.
+In most cases, subglacial water pressure $p_w$ can be approximated as the pressure induced by the overlying ice (overburden pressure):
+
+\begin{equation}\label{eq:4.12}
+  p_w = \rho_i * g * (z_s - z_b)
+\end{equation}
+
+where the static water pressure $p_w$ is equal to the density of ice $\rho_i$ multiplied by the gravitational acceleration term $g$ multiplied by the thickness of ice $z_s - z_b$ obtained from the ice surface elevation $z_s$ minus the ice bed elevation $z_b$.
+Using a gravitational acceleration $g$ of $9.8ms^{-1}$, ice density $\rho_i$ of $917kgm^{-3}$, and water density $\rho_w$ of $1030kgm^{-3}$, we can substitute Equation \eqref{eq:4.12} into \eqref{eq:4.11} to obtain the following equation:
+
+\begin{equation}\label{eq:4.13}
+  \phi = 1107.4\left(\frac{917}{113} * z_s + z_b \right)
+\end{equation}
+
+where the ice surface elevation $z_s$ is about $\frac{917}{113} = 8.11$ times more important than bed surface elevation $z_b$ for its effect on hydropotential $\phi$.
+This is an oft-cited constant, and varies across the literature from as low as $8$ to as high as $11$ depending on what densities of water $\rho_w$ and ice $\rho_i$ are used in the calculation.
+
+% See CarterAntarcticsubglaciallakes2017 Section 3.1, very good hydropotential equation description
+
+% Water under the ice sheet can be detected by remote sensing techniques.
+% This relies on the different transmission properties of ice, water and rock.
+% Surveying these features requires studying either elastic wave (e.g. seismic sounding) or electromagnetic wave (e.g. ice-penetrating radar) signals.
+% The waves may come from active or passive sources, and are detected from sensors deployed on the ground, in the air, or onboard of satellites in space.
