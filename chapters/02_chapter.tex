@@ -84,7 +84,7 @@ Perceptual quality is the extent to which an image looks like a valid natural im
 In this case, perceptual quality is quantified mathematically by the discriminator or critic taking into account high-level features of an image like contrast, texture, etc.
 Another way to improve performance is by reconfiguring the neural network's architecture, wherein the layout or building blocks of the neural network are changed.
 By removing unnecessary model components and adding residual connections \citep{HeDeepResidualLearning2015}, an enhanced deep super-resolution network \citep[EDSR;][]{LimEnhancedDeepResidual2017} features a deeper neural network model that has better performance than older models.
-For the DeepBedMap model, we choose to adapt the Enhanced Super-Resolution Generative Adversarial Network \citep[ESRGAN;][]{WangESRGANEnhancedSuperResolution2019} which brings together the ideas mentioned above.
+For the DeepBedMap model, we choose to adapt the Enhanced Super-Resolution Generative Adversarial Network \citep[\gls{ESRGAN};][]{WangESRGANEnhancedSuperResolution2019} which brings together the ideas mentioned above.
 This approach produces state-of-the-art perceptual quality and won the 2018 Perceptual Image Restoration and Manipulation Challenge on Super Resolution (Third Region; \citealp{Blau2018PIRMChallenge2018}).
 
 \subsection{Network Conditioning} \label{section:networkconditioning}
@@ -243,7 +243,7 @@ All the processed inputs are then concatenated together channel-wise before bein
 The core module is based on the ESRGAN architecture with 12 residual-in-residual dense blocks \citep[see][for details]{WangESRGANEnhancedSuperResolution2019}, saddled in between a pre-residual and post-residual convolutional layer.
 A skip connection runs from the pre-residual layer's output to the post-residual layer's output before being fed into the upsampling module.
 This skip connection \citep{HeIdentityMappingsDeep2016} helps with the neural network training process by allowing the model to also consider minimally processed information from the input module, instead of solely relying on derived information from the residual-block layers when performing the upsampling.
-The upsampling module is composed of two upsampling blocks, specifically a nearest-neighbour upsampling followed by a convolutional layer and leaky rectified linear unit \citep[LeakyReLU;][]{MaasRectifiernonlinearitiesimprove2013} activation, which progressively scales the tensors by 2 times each time.
+The upsampling module is composed of two upsampling blocks, specifically a nearest-neighbour upsampling followed by a convolutional layer and leaky rectified linear unit \citep[\gls{LeakyReLU};][]{MaasRectifiernonlinearitiesimprove2013} activation, which progressively scales the tensors by 2 times each time.
 Following this are two deformable convolutional layers \citep{DaiDeformableConvolutionalNetworks2017} which produce the final-output super-resolution DeepBedMap\_DEM.
 This generator model is trained to gradually improve its prediction by comparing the predicted output with ground-truth images in the training regions (see Fig.~\ref{fig:2}), using the total loss function defined in Eq.~(\ref{eq:A9}).
 

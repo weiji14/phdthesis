@@ -3,7 +3,7 @@
 \section*{Abstract}
 
 To examine an aspect of subglacial water movement in Antarctica, we present a new map of active subglacial lakes inferred from spatiotemporal patterns of ice surface elevation trends.
-An unsupervised density-based classification technique is applied to pre-processed ICESat-2/ATLAS laser altimetry point clouds to detect localized clusters with anomalous rates of elevation change ($>\SI{0.2}{\metre\per\year}$) over a short period of time ($< \SI{1}{\year}$).
+An unsupervised density-based classification technique is applied to pre-processed ICESat-2/ATLAS laser altimetry point clouds to detect localized clusters with anomalous rates of elevation change ($> \SI{0.2}{\metre\per\year}$) over a short period of time ($< \SI{1}{\year}$).
 These elevation anomaly clusters are inferred to be due to basal water movement.
 Our compilation counted a total of 195 active subglacial lakes over the 2018-2020 period, including 36 potential new lakes in the 86--88°S area not detected by the previous ICESat (2003-2009) mission.
 We detail a cascading series of active subglacial lakes exhibiting drain-fill activity along the Whillans Ice Stream central basin, including a rapid ($\sim\SI{7}{\metre}$ vertical displacement over 3 months) filling event at Subglacial Lake Whillans IX.
@@ -15,7 +15,7 @@ The high resolution ($<\SI{40}{\metre}$ along-track spacing) ICESat-2 laser alti
 
 \section{Introduction} \label{sec:subglacialhydrology}
 
-NASA's ICESat-2 laser altimeter launched in 2018 \citep{MarkusIceCloudland2017,NeumannIceCloudLand2019} and has already produced an order of magnitude more data over the previous generation ICESat \citep[2003-2009;][]{ZwallyICESatlasermeasurements2002,ShumanICESatAntarcticelevation2006}, allowing us to map the surface of the Antarctic in great detail.
+NASA's Ice, Cloud, and land Elevation Satellite 2 (\gls{ICESat-2}) laser altimeter launched in 2018 \citep{MarkusIceCloudland2017,NeumannIceCloudLand2019} and has already produced an order of magnitude more data over the previous generation ICESat \citep[2003-2009;][]{ZwallyICESatlasermeasurements2002,ShumanICESatAntarcticelevation2006}, allowing us to map the surface of the Antarctic in great detail.
 This high data volume presents opportunities to capture glaciological processes at an unprecedented scale, both spatially and temporally. % TODO get how many TeraBytes per year
 It also comes with computational challenges, prompting a revision to classic analysis techniques.
 We present an efficient method to identify elevation change from dense point clouds to classify high magnitude ($>$\SI{0.2}{\metre}), short duration ($<$\SI{1}{\year}) ice surface elevation change events for subglacial lake detection.
@@ -242,7 +242,7 @@ Over a decade, these may amount to about a metre or less of elevation change, an
 The conversion of snow to firn and then to glacier ice through the process of densification results in a change in the height of an ice column.
 The rate of densification varies throughout the ice column, and is affected by temperature and the snow accumulation rate \citep{HerronFirnDensificationEmpirical1980}.
 Over Antarctica, thickness change from densification can be greater than that due to mass-balance changes, and the magnitude of simulated firn depth changes of $\pm\SI{0.2}{\metre\per\year}$ is a source of uncertainty when converting altimetry derived ice elevation changes to mass balance changes \citep{HelsenElevationChangesAntarctica2008}.
-Firn densification is also strongly time-dependent, with winter months showing slower rates of firn compaction due to snow accumulation and summer months showing more firn compaction due to higher temperatures \citep[see Fig.~\ref{fig:dhdt_components}][]{Ligtenbergimprovedsemiempiricalmodel2011}.
+Firn densification is also strongly time-dependent, with winter months showing slower rates of firn compaction due to snow accumulation and summer months showing more firn compaction due to higher temperatures \citep[see Fig.~\ref{fig:dhdt_components},][]{Ligtenbergimprovedsemiempiricalmodel2011}.
 
 \paragraph{Flux divergence}
 
@@ -367,8 +367,8 @@ The short two-year time period (2018-2020) used in this study allows us to negle
 
 \subsection{Clustering active lakes: Using DBSCAN} \label{sec:dbscan}
 
-To detect subglacial lake clusters directly on our dense point cloud, we utilize the Density-based spatial clustering of applications with noise (DBSCAN) algorithm \citep{SchubertDBSCANRevisitedRevisited2017}.
-DBSCAN is an unsupervised classification algorithm that does not require the operator to pre-determine the number of clusters (as with K-means clustering).
+To detect subglacial lake clusters directly on our dense point cloud, we utilize the Density-based spatial clustering of applications with noise (\gls{DBSCAN}) algorithm \citep{SchubertDBSCANRevisitedRevisited2017}.
+\gls{DBSCAN} is an unsupervised classification algorithm that does not require the operator to pre-determine the number of clusters (as with K-means clustering).
 It is suited ideally for our active subglacial lake detection task, as it can handle non-spherical shapes.
 There are only two parameters that need to be set.
 $\epsilon$ defines the maximum distance between which two points can be linked in a cluster.
@@ -408,7 +408,7 @@ To filter out outliers, there is a $minPts$ setting that sets the minimum number
 \end{algorithm}
 
 Full details of the active subglacial lake finder algorithm are presented in pseudocode format at Algorithm \ref{alg:lakefinder}.
-Empirically, we determine DBSCAN parameter values of $\epsilon=\SI{3000}{\metre}$ (same as the across-track spacing of ICESat-2's 3 laser beam pairs) and $minPts=300$ to work well for finding potential elevation anomaly clusters while isolating spurious elevation change signals (e.g. due to cloud cover or steep slopes).
+Empirically, we determine \gls{DBSCAN} parameter values of $\epsilon=\SI{3000}{\metre}$ (same as the across-track spacing of ICESat-2's 3 laser beam pairs) and $minPts=300$ to work well for finding potential elevation anomaly clusters while isolating spurious elevation change signals (e.g. due to cloud cover or steep slopes).
 % A sensitivity analysis of different parameter combinations can be found at Fig. ?. % ~\ref{TODO}
 
 The resulting set of potential active subglacial lake clusters (both draining and filling lakes), are then passed though a post-processing stage to prune out false positive lakes.
@@ -488,7 +488,7 @@ Elevation anomaly clusters are especially prevalent along the Siple Coast (Fig.~
 
 \subsubsection{Siple Coast active subglacial lakes} \label{sec:siple_coast_lakes}
 
-Active subglacial lake boundaries classified from the DBSCAN-based algorithm (Sec.~\ref{sec:dbscan}) that coincide with previous lake inventories \citep{Smithinventoryactivesubglacial2009,SiegfriedThirteenyearssubglacial2018} are labelled in Fig.~\ref{fig:4.3} alongside newly discovered lakes labelled with roman numerals (Whillans IX, X and XI).
+Active subglacial lake boundaries classified from the \gls{DBSCAN}-based algorithm (Sec.~\ref{sec:dbscan}) that coincide with previous lake inventories \citep{Smithinventoryactivesubglacial2009,SiegfriedThirteenyearssubglacial2018} are labelled in Fig.~\ref{fig:4.3} alongside some newly discovered lakes labelled with roman numerals (Whillans IX, X and XI).
 Over MacAyeal Ice Stream, the algorithm detected two draining lakes - MacAyeal 1 (Mac1) and MacAyeal 4 (Mac4) documented in \citet{FrickerSynthesizingmultipleremotesensing2010}, and two potential new active subglacial lakes, one filling between Mac1 and Mac4, one filling to the South of Mac1 next to Shabtaie Ice Ridge.
 Over Bindschadler Ice Stream three small elevation anomaly clusters are identified, one pair which is draining and filling close together, and a further one to West that is draining.
 Over Kamb Ice Stream, the algorithm detected filling lakes Kamb 1 (K1), Kamb 34 \citep[K34, see also][]{KimActivesubglaciallakes2016}, Kamb 5 (K5), Kamb 6 (K6), Kamb 7 (K7) and Kamb 8 (K8) originally reported in \citet{Smithinventoryactivesubglacial2009}.
@@ -508,28 +508,6 @@ Site *3 downstream of Subglacial Lake Engelhardt is likely the location of a cli
 Sites *4, *5, and *6 are likely false positive lakes misclassified from altimetry errors over the steep topography of the Transantarctic Mountains.
 
 In the following, we focus on analyzing surface elevation change along the Whillans Ice Stream central catchment saw a series of potentially connected elevation anomalies, including one cluster (Whillans IX) not identified in any previous lake inventory
-
-% The results of the DBSCAN algorithm on the dhdt input over Whillans Ice Stream is presented visually in Fig~\ref{fig:4.4}.
-
-% \begin{figure}[htbp]
-%   \begin{subfigure}[t]{0.9\textwidth}
-%     \includegraphics[width=1.0\textwidth]{chp4_fig1a_plot_atl11_dhdt_whillans}
-%     \caption{Raw dhdt points}
-%     \label{fig:4.4a}
-%   \end{subfigure}
-%   \vfill
-%   \begin{subfigure}[t]{0.9\textwidth}
-%     \includegraphics[width=1.0\textwidth]{chp4_fig1b_subglacial_lake_clusters_at_Whillans}
-%     \caption{Subglacial lake clusters}
-%     \label{fig:4.4b}
-%   \end{subfigure}
-%   \caption{
-%     Finding subglacial lake point clusters using Density-based spatial clustering of applications with noise (DBSCAN).
-%     (a) Input raw ATL11 points with elevation change over time (dhdt) values.
-%     (b) Detected subglacial lake clusters, with draining lakes in red and filling lakes in blue, over the ICESat-2 2018-2020 time period.
-%   }
-%   \label{fig:4.4}
-% \end{figure}
 
 \subsection{Active subglacial lakes at Whillans Ice Stream central basin} \label{sec:whillanscentralbasin}
 
@@ -827,7 +805,7 @@ concentrated at the Eastern part (left-hand side of Fig.~\ref{fig:lake_12_alongt
 
 The ICESat-2 classified Antarctic active subglacial lakes (Fig.~\ref{fig:4.1}) allows us to revisit previously studied lakes and observe new ones.
 As with the previous ICESat based inventory \citep{Smithinventoryactivesubglacial2009}, most active subglacial lakes are located over West Antarctica (see Fig.~\ref{fig:4.1}), including significant clusters over the Institute Ice Stream and Foundation Ice Stream, as well as over Slessor Glacier and Recovery Glacier.
-No active subglacial lakes were detected over the Ellsworth Subglacial Highlands \citep[c.f.][]{NapoleoniSubglaciallakeshydrology2020} in this study.
+No active subglacial lakes were detected over the Ellsworth Subglacial Highlands \citep[c.f.][]{NapoleoniSubglaciallakeshydrology2020} in this study, though this may be due to DBSCAN parameters used in Sec.~\ref{sec:dbscan}.
 Over Thwaites glacier, we see similar patterns of drainage at Thw124 and filling at Thw170 from the 2018-2020 ICESat-2 laser altimetry data, matching well with studies using Cryosat-2 radar altimetry \citep{SmithConnectedsubglaciallake2017,MalczykRepeatSubglacialLake2020} and Sentinel-1 SAR data \citep{HoffmanBriefCommunicationHeterogenous2020}.
 We focus our study on the biggest cluster of active subglacial lakes over the Siple Coast (see Sec.~\ref{sec:siple_coast_lakes}, Sec.~\ref{sec:multi-lobe}), extending the observations of \citet{SiegfriedEpisodicicevelocity2016}.
 
@@ -936,7 +914,7 @@ Integration of horizontal displacements from InSAR speckle-tracking, SAR offset-
 \section{Conclusions}
 
 This ICESat-2 (2018-) active subglacial lake time series extends that of the ICESat (2003-2009) and ongoing Cryosat-2 (2010-) mission \citep{SiegfriedThirteenyearssubglacial2018}.
-Using an unsupervised clustering method (DBSCAN), we identified localized ice surface anomalies over the whole Antarctic continent that are likely caused by subglacial water movement.
+Using an unsupervised clustering method (\gls{DBSCAN}), we identified localized ice surface anomalies over the whole Antarctic continent that are likely caused by subglacial water movement.
 Along the central catchment of Whillans Ice Stream, we applied crossover track analysis to look at the temporal evolution of these elevation anomalies at short ($<$ 3 month) timescales.
 A cascading pattern of subglacial lake drainage was observed, starting from Nov 2019 at Whillans 7 and ending at Nov 2020 at Lake 12.
 Along this cascading drainage path, we detected a new active subglacial lakes named Whillans IX, and two others adjacent to existing Subglacial Lake Whillans.
