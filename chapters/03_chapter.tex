@@ -228,7 +228,7 @@ where $\rho_i$ is ice density, $g$ is gravitational acceleration and $H$ is ice 
   \caption[Topographies and Speed over Pine Island Glacier]{
     Topographies and speed over Pine Island Glacier study area.
     a) Ice surface elevation.
-    b) Ice surface speed.
+    b) Ice surface speed (contours in white).
     c) DeepBedMap\_DEM bed elevation.
     d) BedMachine bed elevation.
     Plotted on an Antarctic Stereographic Projection with a standard latitude of 71°S (EPSG:3031).
@@ -298,8 +298,15 @@ In Fig.~\ref{fig:velocity}, velocity $u_b$ is shown to increase from the upstrea
 The mean velocity ($\bar{u_b}$) for DeepBedMap\_DEM (\SI{614}{\metre\per\year}) is slightly higher than that of BedMachine (\SI{552}{\metre\per\year}), a difference of \SI{62}{\metre\per\year}.
 Spatially, the difference in velocity between the two beds appears to be greatest near the grounding zone around point B (see also Fig.~\ref{fig:transect_CD}b).
 
+\paragraph{Effective Pressure ($N$)}
+
+In Fig.~\ref{fig:effective_pressure}, effective pressure $N$ is shown to decrease from the upstream part of the glacier (A) to the downstream part of the glacier (B) near the grounding zone for both DeepBedMap and BedMachine.
+The mean effective pressure ($\bar{N}$) for DeepBedMap\_DEM ($\SI{1.3389e7}{\pascal}$) is lower than that of BedMachine ($\SI{1.3807e7}{\pascal}$), a difference of $\SI{4.1762e5}{\pascal}$.
+The along-flow transect plot (see Fig.~\ref{fig:transect_AB}c) shows that DeepBedMap\_DEM's effective pressure field over the grounding zone (near point B) is noisier than that of BedMachine.
+
+\begin{landscape}
 \begin{figure}[htbp]
-  \includegraphics[width=1.0\textwidth]{figures/chp3_fig4_inverted_bed_velocity}
+  \includegraphics[scale=0.65]{figures/chp3_fig4_inverted_bed_velocity}
   \caption[Comparison of basal velocity over Pine Island Glacier for DeepBedMap and BedMachine]{
     Comparison of basal velocity $u_b$ over Pine Island Glacier for DeepBedMap and BedMachine.
     Ice flow direction is from top (point A) to bottom (point B).
@@ -308,16 +315,11 @@ Spatially, the difference in velocity between the two beds appears to be greates
   }
   \label{fig:velocity}
 \end{figure}
+\end{landscape}
 
-\clearpage
-\paragraph{Effective Pressure ($N$)}
-
-In Fig.~\ref{fig:effective_pressure}, effective pressure $N$ is shown to decrease from the upstream part of the glacier (A) to the downstream part of the glacier (B) near the grounding zone for both DeepBedMap and BedMachine.
-The mean effective pressure ($\bar{N}$) for DeepBedMap\_DEM ($\SI{1.3389e7}{\pascal}$) is lower than that of BedMachine ($\SI{1.3807e7}{\pascal}$), a difference of $\SI{4.1762e5}{\pascal}$.
-The along-flow transect plot (see Fig.~\ref{fig:transect_AB}c) shows that DeepBedMap\_DEM's effective pressure field over the grounding zone (near point B) is noisier than that of BedMachine.
-
+\begin{landscape}
 \begin{figure}[htbp]
-  \includegraphics[width=1.0\textwidth]{figures/chp3_fig3_inverted_bed_pressure}
+  \includegraphics[scale=0.65]{figures/chp3_fig3_inverted_bed_pressure}
   \caption[Comparison of effective pressure over Pine Island Glacier for DeepBedMap and BedMachine]{
     Comparison of effective pressure $N$ over Pine Island Glacier for DeepBedMap and BedMachine.
     Ice flow direction is from top (point A) to bottom (point B).
@@ -326,17 +328,34 @@ The along-flow transect plot (see Fig.~\ref{fig:transect_AB}c) shows that DeepBe
   }
   \label{fig:effective_pressure}
 \end{figure}
+\end{landscape}
 
-\clearpage
 \paragraph{Slipperiness ($C$)}
 
 In Fig.~\ref{fig:slipperiness}, slipperiness $C$ (friction coefficient) is shown to increase from the upstream part of the glacier (A) to the downstream part of the glacier (B) near the grounding zone for both DeepBedMap and BedMachine.
 The mean slipperiness ($\bar{C}$) for DeepBedMap\_DEM ($\SI{31.39}{(\pascal\,\year\per\metre)}^{1/2}$) is slightly higher than that of BedMachine ($\SI{31.33}{(\pascal\,\year\per\metre)}^{1/2}$), a difference of $\SI{0.06}{(\pascal\,\year\per\metre)}^{1/2}$.
-The along-flow transect plot (see Fig.~\ref{fig:transect_AB}d) shows that DeepBedMap\_DEM is missing one slipperiness peak at X:-1588000 compared to BedMachine Antarctica, owing to an offset of one the ridges.
-% The difference in slipperiness between the two beds is more pronounced near the shear margins of the ice stream.
+The along-flow transect plot (see Fig.~\ref{fig:transect_AB}d) shows that DeepBedMap\_DEM is missing one slipperiness peak at Y:-130000 compared to BedMachine Antarctica, owing to an offset of one the ridges.
+% Spatially, the difference in slipperiness between the two beds is more pronounced near the shear margins of the ice stream (see across-track transect at Fig.~\ref{fig:transect_CD}d).
 
+\paragraph{Basal drag ($\tau_b$)}
+
+In Fig.~\ref{fig:basal_drag}, basal drag $\tau_b$ is shown to increase from the upstream part of the glacier (A) to the downstream part of the glacier (B) near the grounding zone for both DeepBedMap and BedMachine.
+The mean basal drag ($\bar{\tau_b}$) for DeepBedMap\_DEM (\SI{203}{\pascal}) is slightly higher than that of BedMachine (\SI{192}{\pascal}), a difference of \SI{11}{\pascal}.
+Spatially, the difference in basal drag between the two beds appears more pronounced near the shear margins along the main trunk of the glacier (see across-track transect at Fig.~\ref{fig:transect_CD}e).
+
+% are more pronounced at the grounding line near point B, with BedMachine showing a peak value of \SI{1.2e14}{\pascal} and DeepBedMap\_DEM showing \SI{1.6e14}{\pascal}, or a difference of \SI{4e13}{\pascal}.
+
+\paragraph{Transect along Pine Island Glacier trunk}
+
+Transect plots are shown along the main trunk of Pine Island Glacier from upstream point A to downstream point B (Fig.~\ref{fig:transect_AB}), and across flow from high elevation point C to low elevation point D (Fig.~\ref{fig:transect_CD}), with DeepBedMap\_DEM \citep{LeongDeepBedMap2020} and BedMachine \citep{MorlighemMEaSUREsBedMachineAntarctica2020} both showing the same broad trends.
+Modelled basal velocity ($u_b$) for BedMachine appears to fit closer to the ground-truth velocities observed by remote sensing methods \citep{MouginotMEaSUREsPhaseMap2019} than for DeepBedMap\_DEM (Fig.~\ref{fig:transect_AB}b, Fig.~\ref{fig:transect_CD}b).
+Effective pressure ($N$) tends to be lower for DeepBedMap\_DEM than that of BedMachine across both transect lines (Fig.~\ref{fig:transect_AB}c, Fig.~\ref{fig:transect_CD}c), except for near the grounding line close to point B (Fig.~\ref{fig:transect_AB}c).
+Slipperiness ($C$, Fig.~\ref{fig:transect_AB}d, Fig.~\ref{fig:transect_CD}d) and basal drag ($\tau_b$, Fig.~\ref{fig:transect_AB}e, Fig.~\ref{fig:transect_CD}e) fields are mostly comparable for both bed topographies.
+
+\begin{landscape}
 \begin{figure}[htbp]
-  \includegraphics[width=1.0\textwidth]{figures/chp3_fig2_inverted_bed_slipperiness}
+  \centering
+  \includegraphics[scale=0.65]{figures/chp3_fig2_inverted_bed_slipperiness}
   \caption[Comparison of slipperiness over Pine Island Glacier for DeepBedMap and BedMachine]{
     Comparison of slipperiness $C$ (friction coefficient) over Pine Island Glacier for DeepBedMap and BedMachine.
     Ice flow direction is from top (point A) to bottom (point B).
@@ -345,20 +364,11 @@ The along-flow transect plot (see Fig.~\ref{fig:transect_AB}d) shows that DeepBe
   }
   \label{fig:slipperiness}
 \end{figure}
+\end{landscape}
 
-
-\clearpage
-\paragraph{Basal drag ($\tau_b$)}
-
-In Fig.~\ref{fig:basal_drag}, basal drag $\tau_b$ is shown to increase from the upstream part of the glacier (A) to the downstream part of the glacier (B) near the grounding zone for both DeepBedMap and BedMachine.
-The mean basal drag ($\bar{\tau_b}$) for DeepBedMap\_DEM (\SI{203}{\pascal}) is slightly higher than that of BedMachine (\SI{192}{\pascal}), a difference of \SI{11}{\pascal}.
-Spatially, the difference in basal drag between the two beds appears more pronounced near the shear margins along the main trunk of the glacier (see also Fig.~\ref{fig:transect_CD}e).
-
-% TODO difference map of the two
-% are more pronounced at the grounding line near point B, with BedMachine showing a peak value of \SI{1.2e14}{\pascal} and DeepBedMap\_DEM showing \SI{1.6e14}{\pascal}, or a difference of \SI{4e13}{\pascal}.
-
+\begin{landscape}
 \begin{figure}[htbp]
-  \includegraphics[width=1.0\textwidth]{figures/chp3_fig1_inverted_bed_basal_drag}
+  \includegraphics[scale=0.65]{figures/chp3_fig1_inverted_bed_basal_drag}
   \caption[Comparison of basal drag over Pine Island Glacier for DeepBedMap and BedMachine]{
     Comparison of basal drag $\tau_b$ over Pine Island Glacier for DeepBedMap and BedMachine.
     Ice flow direction is from top (point A) to bottom (point B).
@@ -367,14 +377,7 @@ Spatially, the difference in basal drag between the two beds appears more pronou
   }
   \label{fig:basal_drag}
 \end{figure}
-
-
-\paragraph{Transect along Pine Island Glacier trunk}
-
-Transect plots are shown along the main trunk of Pine Island Glacier from upstream point A to downstream point B (Fig.~\ref{fig:transect_AB}), and across flow from high elevation point C to low elevation point D (Fig.~\ref{fig:transect_CD}), with DeepBedMap\_DEM \citep{LeongDeepBedMap2020} and BedMachine \citep{MorlighemMEaSUREsBedMachineAntarctica2020} both showing the same broad trends.
-Modelled basal velocity ($u_b$) for BedMachine appears to fit closer to the ground-truth velocities observed by remote sensing methods \citep{MouginotMEaSUREsPhaseMap2019} than for DeepBedMap\_DEM (Fig.~\ref{fig:transect_AB}b, Fig.~\ref{fig:transect_CD}b).
-Effective pressure ($N$) tends to be lower for DeepBedMap\_DEM than that of BedMachine across both transect lines (Fig.~\ref{fig:transect_AB}c, Fig.~\ref{fig:transect_CD}c), except for near the grounding line close to point B (Fig.~\ref{fig:transect_AB}c).
-Slipperiness ($C$, Fig.~\ref{fig:transect_AB}d, Fig.~\ref{fig:transect_CD}d) and basal drag ($\tau_b$, Fig.~\ref{fig:transect_AB}e, Fig.~\ref{fig:transect_CD}e) fields are mostly comparable for both bed topographies.
+\end{landscape}
 
 \begin{figure}[htbp]
   \includegraphics[width=1.0\textwidth]{figures/chp3_fig_transect_plot_AB}
@@ -431,7 +434,6 @@ The Weertman-style sliding law used by \citet{Kyrke-SmithRelevanceDetailBasal201
 Their Weertman stress exponent value of $m=3$ also differs from that of \citet{JoughinRegularizedCoulombFriction2019} who recommends using $m=8$ for a Weertman slip relation to best match observed velocity data over Pine Island Glacier.
 It thus remains to be seen whether these findings by \citet{Kyrke-SmithRelevanceDetailBasal2018} of high resolution topography reducing skin drag can be generalized to a wider area of the Antarctic Ice Sheet.
 
-% TODO make this paragraph fit in better and not look like it was copy-pasted
 The inversion study here over the main trunk of Pine Island Glacier used a Schoof-type sliding relation on two beds with different spatial resolutions and roughness (i.e. different form drag).
 Our findings suggest that skin drag (influenced by subglacial water and bed material properties) cannot be ruled out as an important factor in ice dynamics when using a high resolution bed, because basal drag ($\tau_b$, i.e. skin drag) did not noticeably decrease when more form drag is added with the use of a higher resolution (\SI{250}{\metre}) DeepBedMap\_DEM over the medium resolution (\SI{500}{\metre}) BedMachine (Fig.~\ref{fig:basal_drag}).
 % \subsection{Future directions}
