@@ -14,8 +14,8 @@
 \usepackage[acronym,symbols,nogroupskip,nonumberlist]{glossaries-extra}
 \usepackage{graphicx}
 \graphicspath{ {figures/} }
-\DeclareGraphicsExtensions{.png,.pdf,.eps}  % use during development
-% \DeclareGraphicsExtensions{.eps,.pdf,.png}  % use for final production
+% \DeclareGraphicsExtensions{.png,.pdf,.eps}  % use during development
+\DeclareGraphicsExtensions{.eps,.pdf,.png}  % use for final production
 \usepackage[bookmarks]{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage{lscape}
@@ -69,24 +69,24 @@
 
 \chapter*{Abstract}
 
-To narrow uncertainties in the Antarctic ice sheet's contribution to sea level rise, we present a collection of novel machine learning and automated satellite remote sensing methods that use ice surface observations to infer the subglacial nature of Antarctica.
-A super-resolution deep neural network called DeepBedMap was designed and trained to produce a high-resolution (\SI{250}{\metre}) bed elevation model of Antarctica called DeepBedMap\_DEM that preserves bed roughness details and can be used for catchment- to continent-scale ice sheet modelling studies.
-This rougher, high-resolution (\SI{250}{\metre}) DeepBedMap\_DEM is compared with a smoother, medium-resolution (\SI{500}{\metre}) BedMachine Antarctica topography in a basal inversion experiment over Pine Island Glacier, with results motivating the need for more research investigating the interacting roles of subglacial hydrology which influences skin drag and high resolution bed topographies which influences form drag.
-Active subglacial lakes in Antarctica over the 2018-2020 time period were mapped using an unsupervised density-based classification method on ICESat-2 point cloud data, yielding 149 active subglacial lakes, including 12 new lakes in the 86--88°S area not detected by the previous ICESat (2003-2009) mission.
+To narrow uncertainties in the Antarctic ice sheet's contribution to sea level rise, we present a collection of novel machine learning and automated satellite remote sensing methods which use ice surface observations to infer the subglacial nature of Antarctica.
+A super-resolution deep neural network called DeepBedMap was designed and trained to produce a high-resolution (\SI{250}{\metre}) bed elevation model of Antarctica called DeepBedMap\_DEM that preserves bed roughness details useful for catchment- to continent-scale ice sheet modelling.
+This DeepBedMap\_DEM is compared with a smoother, medium-resolution (\SI{500}{\metre}) BedMachine topography in a basal inversion experiment over Pine Island Glacier, with results motivating more research into the interacting roles of subglacial hydrology which influences skin drag and high resolution bed topographies which influences form drag.
+Active subglacial lakes in Antarctica were mapped using an unsupervised density-based classification method on ICESat-2 point cloud data from 2018-2020, yielding 195 active subglacial lakes, including 36 new lakes in the 86--88°S area not detected by the previous ICESat (2003-2009) mission.
 This thesis showcases both the rich diversity in subglacial landscapes and the dynamic nature of subglacial hydrology in Antarctica, forming a foundation enabling the accurate modelling of overland ice flow in critical regions of the vulnerable West Antarctic Ice Sheet.
-
 
 \section*{Plain language summary}
 
-Antarctica has a lot of ice, but we're not quite sure how fast it can slide into the sea and cause water to go up in beaches around the world.
-So we teach computers to solve some hard math problems that can help to tell us how fast sea water might go up.
-These computers are fed with lots of pictures taken from cameras high up in the sky and in space, and also from lasers shooting down at earth and bouncing back to tell us if the ice in Antarctica is going up or down.
-Ice sits on top of rock in Antarctica, and after some practice, the computers actually get pretty good at telling us how high and bumpy the rock is.
-We think that the rock under the ice is actually quite bumpy, and ice probably doesn't like sliding over bumpy rocks since it's rough.
-But sometimes ice doesn't mind sliding over rough bits of rock, usually because the rock moves along with it, or because there's some water between the rock and ice that makes things slippery, but we have to ask our smart computers to be sure.
-Once in a while, our lasers in the sky seem to suggest that ice is going up or down a bit strangely in some parts of Antarctica.
-Smart people think that these are lakes hiding under the ice that fill up with water or drain, and we manage to find quite a few of these lakes over Antarctica, especially in an area called Whillans Ice Stream on the Siple Coast.
-We hope that the computers are able to keep on learning faster because there's a lot of pictures that show ice moving pretty fast, and it doesn't look like there's much time before a big chunk of ice might break away in Antarctica and flood many beaches around the world.
+Antarctica has a lot of ice, but we're unsure how fast ice can slide into the sea and cause water to go up in beaches around the world.
+So we teach computers to solve hard math problems that tell us how fast sea water might go up.
+These computers are fed with lots of pictures taken from cameras up in the sky and space.
+Ice sits on top of rock in Antarctica, and with practice, the computers get pretty good at telling us how high and bumpy the rock is.
+The rock under the ice appears quite bumpy, and ice probably doesn't like sliding over bumpy rocks since it's rough.
+Sometimes though, ice may not mind sliding over rough bits of rock if the rock moves along with it, or if water gets in between the rock and ice to makes things slippery, but we ask our smart computers to be sure.
+There are also lasers from space shooting down at earth and bouncing back to tell us how ice in Antarctica is going up or down.
+Once in a while, they tell us that ice in parts of Antarctica moved up or down a bit too fast.
+Smart people think these are lakes hiding under the ice, filling up with water or draining, and we found many of these lakes over Antarctica, especially in an area called Whillans Ice Stream on the Siple Coast.
+We hope that the computers can keep learning faster because there's a lot of pictures showing ice moving pretty fast, and it doesn't look like there's much time before a big chunk of ice might break away in Antarctica and flood beaches around the world.
 
 \chapter*{Dedication}
 To Penny, who led me, so profoundly, to be
@@ -99,10 +99,10 @@ Every step along this journey has not been without the support of a great commun
 My Chinese name is 梁伟吉，each character signifying a part of who I am, my duty in this world, and the enormous privillege that has allowed me to make it to this day.
 
 Family 粱 (Leong) comes first.
-My dearest partner Penny Qiu Yue 邱乐, you have went above and beyond what a normal long distance relationship entails, keeping me company daily through good times and bad, being patient, trusting and more than I could ever express in my supposedly native broken Malaysian/Bruneian Chinese.
+My dearest partner Penny Qiu Yue 邱乐, you have went above and beyond what a normal long distance relationship entails, keeping me company daily through good times and bad, being patient, trusting and more than I could ever express in my supposedly native yet broken Malaysian/Bruneian Chinese.
 Above all, thank you for sharing the most precious asset there is - 时间 - time - which for that, I am forever grateful.
 To my younger sister Wei Qian 伟倩 and brother Wei Tong 伟桐，growing up with you two in Brunei has taught me the importance of sharing and looking after each other, so thank you for your understanding, for all the catch up calls, and simply for being.
-For dad and mum，梁耀明 and 陈碹丝，it takes a million to raise one child, let alone three, and I have lost count of the number of side jobs you've had over the years, especially the struggles in recent times, both of you deserve a special thank you and a long holiday.
+For Dad and Mum，梁耀明 and 陈碹丝，it takes a million to raise one child, let alone three, and I have lost count of the number of side jobs you've had over the years, especially the struggles in recent times, both of you deserve a special thank you and a long holiday.
 
 To my local family in Wellington, Jaclyn and David Chai, for the nourishment you have provided over the years in the form of yummy Malaysian style vegetarian food.
 It is unbelievable how fast time flies, seeing your two kids ZH and Yi Ling grow tall and mature, you are all my second family and will always be remembered.
@@ -122,11 +122,12 @@ I feel really fortunate to be able to stand on the shoulders of giants, and woul
 
 \paragraph{Open source}
 
-To Leonardo Uieda, DongDong Tian 田冬冬, Liam Toney and the rest of the PyGMT team, and also to Paul Wessel for his enduring work on the Generic Mapping Tools (GMT) package over many decades, it is a pleasure to have such a great tool for producing beautiful maps, thank you for all the new features and bug fixes, keep up the good work!
+To Leonardo Uieda, DongDong Tian 田冬冬, Liam Toney and the rest of the PyGMT team, and also to Paul Wessel for his enduring work on the Generic Mapping Tools (GMT) package over many decades, it is a pleasure to have such a great tool for producing beautiful maps。
+To all the folks maintaining the Python and Pangeo ecosystem of geospatial packages, from Xarray to RAPIDS AI and every imaginable library in between, thank you for all the new features and bug fixes, keep up the good work!
 
 \paragraph{Europe}
 
-To Poonam Vishwas, KaiKai Xue, Yawen Tan, and all the friends I met in the 2019 Erasmus+ exchange at ZGIS, University of Salzburg, Austria, it was an awesome experience having so many like-minded people researching GIS together in Europe, an experience I will always treasure.
+To Poonam Vishwas, KaiKai Xue 薛凯, Yawen Tan 谭雅文, and all the friends I met in the 2019 Erasmus+ exchange at ZGIS, University of Salzburg, Austria, it was an awesome experience having so many like-minded people researching GIS together in Europe, an experience I will always treasure.
 To Dr. Hermann Klug, thank you for warmly inviting me to Salzburg and sorting out all manners of logistics in German, and to Dr. Dirk Tiede for introducing me to Object Based Image Analysis and providing a conceptual framework for understand the place of Convolutional Neural Networks in the wider field supervised classification is GIS.
 
 \paragraph{United States}

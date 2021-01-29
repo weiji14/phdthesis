@@ -1,8 +1,8 @@
 % conclusions
 
-This thesis maps out the subglacial world of Antarctica using satellite measured surface observations.
+This thesis maps the subglacial world of Antarctica using satellite surface observations.
 A series of machine learning, inverse modelling and remote sensing methods were presented, utilizing high spatial resolution ($<= \SI{250}{\metre}$) datasets to investigate Antarctica's subglacial topography and hydrology, with implications for ice flow dynamics and future sea level projections.
-This section synthesizes the discoveries made in light of answering our original research questions, highlights gaps remaining in both our observations and numerical models of subglacial Antarctica, and presents a path forward for future scholars.
+This section synthesizes the findings made in the context of our original research questions, highlights gaps remaining in both our observations and numerical models of subglacial Antarctica, and presents a path forward for future studies.
 
 \section{Research Questions}
 
@@ -18,24 +18,25 @@ This section synthesizes the discoveries made in light of answering our original
   \item What effect does a rough surface, high-resolution (\SI{250}{\metre}) bed topography have on the friction parameters of an ice sheet model?
 
   To examine the relative contributions of form drag and skin drag which opposes the driving stress of a glacier, a basal inversion experiment was performed on two different bed topographies - a rougher high-resolution (\SI{250}{\metre}) DeepBedMap\_DEM \citep{LeongDeepBedMapdeepneural2020} and a smoother medium-resolution (\SI{500}{\metre}) BedMachine Antarctica \citep{MorlighemDeepglacialtroughs2019}.
-  The inversion was conducted via an iterative least-squares control method using the Ice-sheet and Sea-level System Model \citep{LarourContinentalscalehigh2012} with a Coulomb-limited Schoof-type sliding law.
-  The inverted basal fields between DeepBedMap\_DEM and BedMachine appear to be within the one sigma error margin, though both basal drag and slipperiness fields are slightly higher while effective pressure is generally lower for the inversions ran on the higher-resolution DeepBedMap\_DEM.
-  The results here do not support the findings of previous studies using a Weertman-style sliding relation by \citet{Kyrke-SmithRelevanceDetailBasal2018} who indicated that skin drag was reduced when high resolution bed topography was incorporated into the model.
-  Our findings in this chapter highlight that more research is needed over diverse subglacial settings in West Antarctica to investigate the role of subglacial hydrology which influences skin drag, on high resolution bed topographies ($\leq\SI{100}{\metre}$ which influences form drag.
+  The inversion was conducted via an iterative least-squares control method using the Ice-sheet and Sea-level System Model \citep[\gls{ISSM};][]{LarourContinentalscalehigh2012} with a Coulomb-limited Schoof-type sliding law.
+  The inverted basal fields between DeepBedMap\_DEM and BedMachine did not appear to be significantly different, though both basal drag and slipperiness fields are slightly higher while effective pressure is generally lower for the inversions that used the higher-resolution DeepBedMap\_DEM.
+  We did not observe a noticeable decrease in basal drag (i.e. less skin drag) when higher resolution topography (i.e. more form drag) was used, in contrast to previous studies using a Weertman-style sliding relation by \citet{Kyrke-SmithRelevanceDetailBasal2018} who indicated that basal drag was reduced (i.e. less skin drag) when high resolution bed topography (i.e. more form drag) was incorporated into the model.
+  Our findings in this chapter highlight that more ice sheet modelling research is needed over diverse subglacial settings in West Antarctica.
+  Specifically, to investigate the role of subglacial hydrology which influences skin drag, and the effects of using high resolution bed topographies ($\leq\SI{100}{\metre}$) which increases form drag.
 
-  \item Where does water drain and accumulate underneath the Antarctic Ice Sheet, how much volume exists, and at what timescales do these processes occur?
+  \item Where does water drain and accumulate underneath the Antarctic Ice Sheet, how much volume is mobilized, and at what timescales do these processes occur?
 
   A map of active subglacial lakes in Antarctica is presented, detected using ICESat-2 laser altimetry data over the 2018-2020 time period.
   Active subglacial lake locations were determined via an unsupervised density-based classification method on ICESat-2 point cloud data pre-processed to highlight anomalous ice surface elevation change rates.
-  The algorithm yielded a total of 149 active subglacial lakes, including 12 new lakes in the 86--88°S area not detected by the previous ICESat (2003-2009) mission.
+  The algorithm yielded a total of 195 active subglacial lakes, including 36 new lakes in the 86--88°S area not detected by the previous ICESat (2003-2009) mission.
   We detailed a cascading pattern of drain-fill activity over the Whillans Ice Stream central basin at the Siple Coast, and revealed multi-lobe subglacial lake clusters separated by ridges using the high resolution ($<\SI{40}{\metre}$ along-track spacing) ICESat-2 laser altimetry data.
-  An interesting observation was the unusually high rate of surface elevation uplift and slow descent at Subglacial Lake Whillans IX ($\sim\SI{7}{\metre}$ vertical rise over 3 months) and Whillans 7 ($\sim\SI{-6}{\metre}$ lowering over 11 months) which stands in contrast with previous studies over the Whillans Ice Stream catchment area that tend to show slow fill and rapid drainage \citep{SiegfriedThirteenyearssubglacial2018,SiegfriedEpisodicicevelocity2016}.
+  An interesting observation was the unusually high rate of surface elevation uplift and slow descent at Subglacial Lake Whillans IX ($\sim\SI{8}{\metre}$ vertical rise over 3 months) and Whillans 7 ($\sim\SI{-7}{\metre}$ lowering over 11 months) which stands in contrast with previous studies over the Whillans Ice Stream catchment area that tend to show slow fill and rapid drainage \citep{SiegfriedThirteenyearssubglacial2018,SiegfriedEpisodicicevelocity2016}.
 
 \end{enumerate}
 
 \section{Future work}
 
-Advances in glaciology are driven by the availability of newer, high quality datasets combined with better, physical numerical models.
+Many advances in glaciology are driven by the availability of newer, high quality datasets combined with better, physical numerical models.
 In the following, we highlight data gaps to be filled, and missing components in our understanding of the physical mechanisms of ice flow over the subglacial terrain of Antarctica.
 
 \subsection{Towards BEDMAP3 - More data to super-resolve the bed topography of Antarctica}
@@ -44,6 +45,7 @@ In Chapter \ref{ch:2}, we indicated that there is missing coverage of bed elevat
 Swath processing of RES data \citep[e.g.][]{HolschuhLinkingpostglaciallandscapes2020} should become a priority, and new acquisitions should target a diverse range of bed and flow types.
 Furthermore, we should continue to survey formerly glaciated beds around the margins of Antarctica using ship-based swath bathymetry instruments and on land in areas like the former Laurentide ice sheet using LIDAR.
 Continued measurements by remote sensing satellites is also needed to patch up data gaps in surface elevation, velocity and snow accumulation.
+All this new data will be used to inform the next generation bed topography model of Antarctica - BEDMAP3.
 
 \subsection{Coupling ice flow models with evolving subglacial hydrological models}
 
@@ -54,7 +56,7 @@ More prognostic forward model runs should be done on high resolution bed elevati
 \subsection{Continuous active subglacial lake time-series data}
 
 In Chapter \ref{ch:4}, we used the ICESat-2 laser altimeter to create an inventory of active subglacial lakes for a short time period from 2018-2020, but future work should extend the record both backwards in time to the ICESat era (2003-2009) and into the future such as with the CRISTAL radar altimeter mission \citep{KernCopernicusPolarIce2020}.
-A priority for the remote sensing community will be to mitigate against any interruptions in the data record (such as between ICESat and Cryosat-2 previously), utilizing oversnow geophysical surveys or continuous GPS stations if necessary on key sites to minimize loss of continuous coverage.
+A priority for the remote sensing community will be to mitigate against any interruptions in the data record (such as between ICESat and Cryosat-2 previously), utilizing airborne geophysical surveys or GPS stations (such as with Operation IceBridge) if necessary on key sites to minimize loss of continuous coverage.
 One critical piece of work will lie in calibrating differences in elevation measurements across laser- and radar-based satellite altimeters \citep[c.f.][]{SiegfriedThirteenyearssubglacial2018}, for the currently operational ICESat-2 and Cryosat-2 \citep{BruntComparisonsSatelliteAirborne2020} and in the future as new satellite altimeters come online.
 
 \section{Concluding remark}
