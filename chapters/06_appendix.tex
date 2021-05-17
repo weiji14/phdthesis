@@ -41,7 +41,7 @@ The generator network's adversarial loss is in a symmetrical form:
 \section{Topographic Loss}
 
 We further define a topographic loss so that the elevation values in the super-resolved image make topographic sense with respect to the original low-resolution image.
-Specifically, we want the mean value of each 4\,$\times$\,4 grid on the predicted super-resolution (DeepBedMap) image to closely match its spatially corresponding 1\,\unit{pixel}\,$\times$\,1\,\unit{pixel} area on the low-resolution (BEDMAP2) image.
+Specifically, we want the mean value of each 4\,$\times$\,4 grid on the predicted super-resolution (DeepBedMap) image to closely match its spatially corresponding \SI{1}{pixel}\,$\times$\,\SI{1}{pixel} area on the low-resolution (BEDMAP2) image.
 
 First, we apply a 4\,$\times$\,4 mean pooling operation on the generator network's predicted super-resolution image:
 
