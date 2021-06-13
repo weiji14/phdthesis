@@ -11,7 +11,7 @@
 \usepackage{subcaption}
 \usepackage{CJKutf8}
 \usepackage[T1]{fontenc}
-\usepackage[acronym,symbols,nogroupskip,nonumberlist]{glossaries-extra}
+\usepackage[acronym,symbols,nogroupskip,nonumberlist,toc]{glossaries-extra}
 \usepackage{graphicx}
 \graphicspath{ {figures/} }
 % \DeclareGraphicsExtensions{.png,.pdf,.eps}  % use during development
@@ -45,10 +45,15 @@
 \newacronym{DBSCAN}{DBSCAN}{Density-based Spatial Clustering of Applications with Noise}
 \newacronym{DEM}{DEM}{Digital Elevation Model}
 \newacronym{ESRGAN}{ESRGAN}{Enhanced Super-Resolution Generative Adversarial Network}
-\newacronym{ICESat-2}{ICESat-2}{Ice, Cloud, and land Elevation Satellite 2}
+\newacronym{ICESat-2}{ICESat-2}{
+  Ice, Cloud, and land Elevation Satellite 2. A near polar-orbit laser altimeter satellite that measures ice surface elevation.
+}
 \newacronym{IPCC}{IPCC}{Intergovernmental Panel on Climate Change}
 \newacronym{ISSM}{ISSM}{Ice-sheet and Sea-level System Model}
 \newacronym{LeakyReLU}{LeakyReLU}{Leaky Rectified Linear Unit}
+\newacronym{REMA}{REMA}{
+  Reference Elevation Model of Antarctica. A high resolution, time-stamped Digital Surface Elevation Model of Antarctica created from stereophotogrammetry.
+}
 \newacronym{RES}{RES}{Radio-echo sounding}
 \newacronym{SD}{SD}{Standard deviation}
 \newacronym{SLE}{SLE}{Sea level equivalent}
@@ -151,6 +156,8 @@ Finally to anyone that I left out, you are not unnoticed, this sentence is for y
 \listoftables
 
 % \printnoidxglossary[type=symbols,sort=use,style=long,title={List of Symbols}]
+\glsaddall
+\setglossarystyle{altlist}
 \printglossary[type=\acronymtype]
 
 \chapter{Introduction}
