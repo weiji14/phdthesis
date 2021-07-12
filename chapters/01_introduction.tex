@@ -109,7 +109,7 @@ BedMachine Antarctica \citep{MorlighemMEaSUREsBedMachineAntarctica2020} is gener
     Comparing \gls{RES} bed elevation measurements against different bed products along transect lines in Antarctica.
     % TODO ref{chp:}
     Top panel is over Thwaites Glacier, showing super resolution DeepBedMap\_DEM \citep[purple;][]{LeongDeepBedMapdeepneural2020}, Ground-truth Operation IceBridge \gls{RES} points \citep[orange;][]{ShiMultichannelCoherentRadar2010} and BedMachine Antarctica \citep[green;][]{MorlighemDeepglacialtroughs2019}.
-    Bottom panel is over Princess Elizabeth Land, showing ICECAP2 \gls{RES} transects (black), BEDMAP2 (blue), BedMachine (red), and ICECAP2 DEM (green) \citep[Fig. 6 from][]{CuiBedtopographyPrincess2020}.
+    Bottom panel is over Princess Elizabeth Land, showing ICECAP2 \gls{RES} transects (black), BEDMAP2 (blue), BedMachine (red), and ICECAP2 DEM (green) \citep[Fig. 6 from][, licensed under \href{https://creativecommons.org/licenses/by/4.0}{CC-BY-4.0}]{CuiBedtopographyPrincess2020}.
   }
   \label{fig:1.2}
 \end{figure}
@@ -125,11 +125,13 @@ Specifically, training a neural network on areas with high resolution datasets, 
 Our deep learning method has similarities with inverse methods \citep{GudmundssonInverseMethodsGlaciology2011}, whereby knowing ice surface elevation, velocity, surface accummulation, and other surface observations in detail allows us to infer what the bed topography might be like.
 In contrast to inverse methods, we introduced a specific adversarial loss function \citep{GoodfellowGenerativeAdversarialNetworks2014} that penalizes overtly smooth topography, pushing bed predictions towards that of realistic groundtruth surfaces.
 
-\begin{figure}[htbp]
-  \includegraphics[width=0.9\textwidth]{chp1_fig_universal_glacier_slip_law.jpg}
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=1.0\textwidth]{chp1_fig_universal_glacier_slip_law.jpg}
   \caption[Universal glacier slip law]{
     A universal glacier slip law spanning the spectrum of form drag and skin drag regimes.
     Figure is from \citet{Minchewuniversalglacierslip2020}.
+    Reprinted with permission from AAAS.
   }
   \label{fig:1.3}
 \end{figure}
@@ -152,7 +154,7 @@ Water beneath an ice sheet is dynamic, and has been shown to affect the speed of
 While no active moulins are known to be present in the interior regions of West and East Antarctica \citep{DirscherlAutomatedMappingAntarctic2020,StokesWidespreaddistributionsupraglacial2019}, there is still a considerable volume of water trapped in subglacial lakes \citep{WrightfourthinventoryAntarctic2012}.
 Many of these subglacial lakes are active and have drained and filled over the satellite era \citep[Fig.~\ref{fig:1.4},][]{Smithinventoryactivesubglacial2009,SiegfriedThirteenyearssubglacial2018}, including some that were associated with a temporary speed-ups of ice flow \citep[e.g.][]{Scambostriggeringsubglaciallake2011,BellLargesubglaciallakes2007,StearnsIncreasedflowspeed2008,WrightSubglacialhydrologicalconnectivity2014}.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
   \centering
   \begin{subfigure}[t]{1.0\textwidth}
     % TODO get higher resolution image from https://doi.org/10.1017/aog.2017.36 somehow
