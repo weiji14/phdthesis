@@ -7,7 +7,7 @@ This section synthesizes the findings made in the context of our original resear
 \section{Research Questions}
 
 \begin{enumerate}
-  \item Can we use a super-resolution convolutional neural network to create a higher spatial resolution (\SI{250}{\metre}) bed elevation map of Antarctica?
+  \item How can we integrate existing high spatial resolution remote sensing products to boost the resolution of existing bed elevation maps of Antarctica?
 
   A deep neural network called DeepBedMap was designed to super-resolve the bed elevation of Antarctica \citep{LeongDeepBedMapdeepneural2020}, with the model architecture adapted from an Enhanced Super-Resolution Generative Adversarial Network \citep{WangESRGANEnhancedSuperResolution2019}.
   The DeepBedMap model is trained on areas in Antarctica where high-resolution (\SI{250}{\metre}) ground-truth bed elevation grid images are available, and then applied across the entire Antarctic continent.
@@ -37,6 +37,9 @@ This section synthesizes the findings made in the context of our original resear
 \section{Future work}
 
 Many advances in glaciology are driven by the availability of newer, high quality datasets combined with better, physical numerical models.
+In particular, highly parallel compute processors such as general purpose graphical processing units has opened up new possibilities around the use of neural network models on remote sensing data.
+Computational glaciology can greatly benefit from new machine learning tools that allow us to see and predict changes that were previously unattainable.
+One of the exciting ideas emerging from this work, is how measurement data collected at multiple scales (satellite, airborne, ground-based) can be integrated statistically and be used to infer high resolution data at unsurveyed sites, while providing the intelligence to suggest new sites where field measurements should go next.
 In the following, we highlight data gaps to be filled, and missing components in our understanding of the physical mechanisms of ice flow over the subglacial terrain of Antarctica.
 
 \subsection{Towards BEDMAP3 - More data to super-resolve the bed topography of Antarctica}

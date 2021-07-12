@@ -8,7 +8,7 @@ We examine how an increase in form drag due to higher resolution topography affe
 An iterative least-squares control method basal inversion is performed using the Ice-sheet and Sea-level System Model (\gls{ISSM}) with L1L2 stress balance equations and a Schoof-type Coulomb-limited sliding law.
 Comparison of inverted fields between DeepBedMap\_DEM and BedMachine Antarctica do not appear to be significantly different.
 Basal drag and slipperiness fields are slightly higher, while effective pressure is generally lower when using the higher-resolution DeepBedMap\_DEM, due to a higher bed elevation model and thinner ice inducing less overburden pressure.
-Previous inversion studies using a Weertman-style sliding relation over Pine Island Glacier indicated that high resolution bed topography (i.e. more form form drag) reduced basal drag (i.e. less skin drag), a conclusion that is not supported in this work as no noticeable decrease in basal drag (i.e. skin drag) was observed when higher resolution topography (i.e. more form drag) was used.
+Previous inversion studies using a Weertman-style sliding relation over Pine Island Glacier indicated that high resolution bed topography (i.e. more form drag) reduced basal drag (i.e. less skin drag), a conclusion that is not supported in this work as no noticeable decrease in basal drag (i.e. skin drag) was observed when higher resolution topography (i.e. more form drag) was used.
 These findings warrant more investigation into the dependence of ice sheet modelling on higher spatial resolution bed topographies ($<= \SI{100}{\metre}$) which increases form drag, and time-dependent subglacial hydrology which influences skin drag, over more diverse subglacial settings in West Antarctica.
 
 
@@ -70,7 +70,7 @@ This super-resolution (\SI{250}{\metre}) DeepBedMap\_DEM grid \citep[version 1.1
 
 Form drag arises due to large-scale bed topography which opposes the motion of ice as it flows and deforms around obstacles on a rigid bed \citep[][]{WeertmanSlidingGlaciers1957,SchoofBasalperturbationsice2002}.
 Skin drag occurs in relation to bed material properties and in the presence of water that acts to lubricate the ice-bed interface and allow subglacial till to deform more easily \citep{IversonExperimentsdynamicssedimentary2015}.
-The physical mechanisms of these two processes may differ, but the mathematical formulation and parameterizations for both are similar \citep{Minchewuniversalglacierslip2020}.
+The physical mechanisms of these two processes may differ, but the mathematical formulation and parameterizations for both are similar \citep[Fig.~\ref{fig:1.3},][]{Minchewuniversalglacierslip2020}.
 
 \subsubsection{Physical basis of basal slip}
 
@@ -103,7 +103,7 @@ The physical formulation of Equation \eqref{eq:3.1} is similar to that of other 
 It is not feasible to access subglacial till across a glaciated area to physically determine $u_t$ using Equation \eqref{eq:3.1}, so parameterized basal slip relations are used in practice.
 Sensitivity analyses conducted in multiple ice sheet model comparison studies \citep[e.g.][]{SeroussiinitMIPAntarcticaicesheet2019,SunAntarcticicesheet2020,ZhangcomparisontwoStokes2017} have explored the use of different basal slip relations or sliding laws (see Fig.~\ref{fig:sliding_laws}), and the different tunable parameters that come with them.
 \citet{Gillet-ChauletAssimilationsurfacevelocities2016} used surface velocity observations from 1996 to 2010 over Pine Island Glacier and suggested that a non-linear Weertman stress exponent of $m >= 5$ best matched observed flow accelerations, with the assumption that the basal slipperiness coefficient $C$ remained constant over the period.
-In the Antarctic BUttressing Model Intercomparison Project \citep[ABUMIP;][]{SunAntarcticicesheet2020}, the ice-shelf removal or `float-kill' experiment (ABUK) noted how ice sheet models implementing linear Weertman/Colomb friction laws tend to show lower ice loss (\SI{3.07}{\metre} \gls{SLE}) than models which implemented pseudo-plastic (\SI{4.41}{\metre} \gls{SLE}) or plastic (\SI{10.20}{\metre} \gls{SLE}) sliding laws.
+In the Antarctic BUttressing Model Intercomparison Project \citep[ABUMIP;][]{SunAntarcticicesheet2020}, the ice-shelf removal or `float-kill' experiment (ABUK) noted how ice sheet models implementing linear Weertman/Coulomb friction laws tend to show lower ice loss (\SI{3.07}{\metre} \gls{SLE}) than models which implemented pseudo-plastic (\SI{4.41}{\metre} \gls{SLE}) or plastic (\SI{10.20}{\metre} \gls{SLE}) sliding laws.
 Ice sheet models implementing such non-linear/plastic sliding laws generally lead to faster grounding line retreat than those using viscous linear sliding laws over the Amundsen Sea Embayment area \citep[e.g.][]{JoughinBasalconditionsPine2009,RitzPotentialsealevelrise2015,BrondexSensitivitygroundingline2017,BulthuisUncertaintyquantificationmulticentennial2019}.
 
 \begin{figure}[htbp]
@@ -158,8 +158,8 @@ Here, we expand on the work of \citet{Kyrke-SmithRelevanceDetailBasal2018} by ru
 
 \subsubsection{Stress balance model}
 
-We use an L1L2 model \citep{Hindmarshnumericalcomparisonapproximations2004,SchoofThinFilmFlowsWall2010} implemented in the Ice-sheet and Sea-level System Model \citep[\gls{ISSM}, version 4.18;][]{LarourContinentalscalehigh2012}.
-\gls{ISSM} is a thermomechanical finite-element ice flow model that follows physical laws for the conservation of mass, momentum and energy that is coupled with constitutive material laws and boundary conditions \citep{LarourContinentalscalehigh2012}.
+We use an L1L2 model \citep{Hindmarshnumericalcomparisonapproximations2004,SchoofThinFilmFlowsWall2010} implemented in the Ice-sheet and Sea-level System Model \citep[\gls{ISSM}, v4.18;][]{LarourContinentalscalehigh2012}.
+\gls{ISSM} is a thermomechanical finite-element ice flow model that follows physical laws for the conservation of mass, momentum and energy, coupled with constitutive material laws and boundary conditions \citep{LarourContinentalscalehigh2012}.
 Ice is treated as an viscous incompressible material \citep{Cuffeyphysicsglaciers2010} with a non-linear ice effective viscosity $\mu$ following a Norton-Hoff rheology law \citep[Glen's flow law,][]{Glencreeppolycrystallineice1955}:
 
 \begin{equation}
@@ -190,18 +190,18 @@ The friction factor $C_{\text{max}}$ imposes an upper limit on $\tau_b$ which mu
 \end{equation}
 
 where $\beta$ is the maximum local up-slope angle between the bed and mean flow direction.
-Based on laboratory experiments \citep{IversonRingshearstudiestill1998}, $C_{\text{max}}$ is set to between $\tan \SI{10}{\degree} = 0.17$ and $\tan \SI{40}{\degree} = 0.84$, with lower values corresponding to clay-rich tills \citep[, pp.266-267]{Cuffeyphysicsglaciers2010}.
+Based on lab experiments \citep{IversonRingshearstudiestill1998}, $C_{\text{max}}$ is set to between $\tan \SI{10}{\degree} = 0.17$ and $\tan \SI{40}{\degree} = 0.84$, with lower values corresponding to clay-rich tills \citep[, pp.266-267]{Cuffeyphysicsglaciers2010}.
 The spatial distribution of $C_{max}$ varies across a glacier but no method yet exists to constrain it, so a uniform value of 0.4 is used instead \citep[0.4 and 0.6 was used in][]{BrondexSensitivitycentennialmass2019}.
 % The magnitude of $\tau_b$ has an asymptotic behaviour, tending towards $|u|^{\frac{1}{m}}$ at low ice velocities when $|u| << u_o$, but to $\tau_0$ at high ice velocities when $|u| >> u_o$.
 The magnitude of $\tau_b$ has an asymptotic behaviour, such that $\tau_b \sim C u_b^m$ as $N$ trends towards infinity corresponding to a Weertman-type sliding regime, and $\tau_b \sim C_{\text{max}} N$ as $N$ trends towards zero corresponding to a Coloumb-type sliding regime \citep{BrondexSensitivitygroundingline2017}.
 
-The effective pressure ($N$) can be approximated using ice overburden pressure:
+The effective pressure ($N$) can be approximated using ice overburden pressure minus water pressure:
 
 \begin{equation}
-  N = \rho_i g H
+  N = \rho_i g H - P_w
 \end{equation}
 
-where $\rho_i$ is ice density, $g$ is gravitational acceleration and $H$ is ice thickness.
+where $\rho_i$ is ice density, $g$ is gravitational acceleration, $H$ is ice thickness and $P_w$ is water pressure.
 
 % A Budd-type sliding law \citep{BuddEmpiricalStudiesIce1979} is applied with parameters $p=1$, $q=1$, % TODO check parameters
 
@@ -224,11 +224,12 @@ where $\rho_i$ is ice density, $g$ is gravitational acceleration and $H$ is ice 
 \subsubsection{Boundary conditions} \label{sec:boundary_conditions}
 
 \begin{figure}[htbp]
-  \includegraphics[width=1.0\textwidth]{figures/chp3_fig_topography_and_speed}
+  \centering
+  \includegraphics[width=0.99\textwidth]{figures/chp3_fig_topography_and_speed}
   \caption[Topographies and Speed over Pine Island Glacier]{
     Topographies and speed over Pine Island Glacier study area.
-    a) Ice surface elevation.
-    b) Ice surface speed (contours in white).
+    a) Ice surface elevation from \citet{HowatReferenceElevationModel2019}.
+    b) Ice surface speed (contours in white) from \citet{MouginotMEaSUREsPhaseMap2019}.
     c) DeepBedMap\_DEM bed elevation.
     d) BedMachine bed elevation.
     Plotted on an Antarctic Stereographic Projection with a standard latitude of 71°S (EPSG:3031).

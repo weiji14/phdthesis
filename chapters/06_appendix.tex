@@ -41,7 +41,7 @@ The generator network's adversarial loss is in a symmetrical form:
 \section{Topographic Loss}
 
 We further define a topographic loss so that the elevation values in the super-resolved image make topographic sense with respect to the original low-resolution image.
-Specifically, we want the mean value of each 4\,$\times$\,4 grid on the predicted super-resolution (DeepBedMap) image to closely match its spatially corresponding 1\,\unit{pixel}\,$\times$\,1\,\unit{pixel} area on the low-resolution (BEDMAP2) image.
+Specifically, we want the mean value of each 4\,$\times$\,4 grid on the predicted super-resolution (DeepBedMap) image to closely match its spatially corresponding \SI{1}{pixel}\,$\times$\,\SI{1}{pixel} area on the low-resolution (BEDMAP2) image.
 
 First, we apply a 4\,$\times$\,4 mean pooling operation on the generator network's predicted super-resolution image:
 
@@ -163,13 +163,13 @@ In most cases, subglacial water pressure $p_w$ can be approximated as the pressu
 \end{equation}
 
 where the static water pressure $p_w$ is equal to the density of ice $\rho_i$ multiplied by the gravitational acceleration term $g$ multiplied by the thickness of ice $z_s - z_b$ obtained from the ice surface elevation $z_s$ minus the ice bed elevation $z_b$.
-Using a gravitational acceleration $g$ of $9.8ms^{-1}$, ice density $\rho_i$ of $917kgm^{-3}$, and water density $\rho_w$ of $1030kgm^{-3}$, we can substitute Equation \eqref{eq:4.12} into \eqref{eq:4.11} to obtain the following equation:
+Using a gravitational acceleration $g$ of \SI{9.8}{\metre\per\second}, ice density $\rho_i$ of \SI{917}{\kilo\gram\per\metre\cubed}, and water density $\rho_w$ of \SI{1000}{\kilo\gram\per\metre\cubed}, we can substitute Equation \eqref{eq:4.12} into \eqref{eq:4.11} to obtain the following equation:
 
 \begin{equation}\label{eq:4.13}
-  \phi = 1107.4\left(\frac{917}{113} * z_s + z_b \right)
+  \phi = 813.4\left(\frac{917}{83} * z_s + z_b \right)
 \end{equation}
 
-where the ice surface elevation $z_s$ is about $\frac{917}{113} = 8.11$ times more important than bed surface elevation $z_b$ for its effect on hydropotential $\phi$.
+where the ice surface elevation $z_s$ is about $\frac{917}{83} = 11.05$ times more important than bed surface elevation $z_b$ for its effect on hydropotential $\phi$.
 This is an oft-cited constant, and varies across the literature from as low as $8$ to as high as $11$ depending on what densities of water $\rho_w$ and ice $\rho_i$ are used in the calculation.
 
 % See CarterAntarcticsubglaciallakes2017 Section 3.1, very good hydropotential equation description
